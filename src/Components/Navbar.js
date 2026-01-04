@@ -11,8 +11,9 @@ import {
   AcademicCapIcon,
   SupportIcon,
   SparklesIcon,
+  ChevronUpIcon,
 } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../Assests/erastuslogo.png";
 
 function Navbar() {
@@ -31,11 +32,14 @@ function Navbar() {
   });
   const [users, setUsers] = useState([]);
   const [scrolled, setScrolled] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const navigate = useNavigate();
 
-  // Handle scroll effect
+  // Handle scroll effect for navbar and scroll-to-top button
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
+      setShowScrollTop(window.scrollY > 500);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -56,6 +60,21 @@ function Navbar() {
       setUsers(JSON.parse(savedUsers));
     }
   }, []);
+
+  // Function to scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // Enhanced navigation handler
+  const handleNavigation = (path) => {
+    setIsMenuOpen(false);
+    scrollToTop();
+    navigate(path);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -217,20 +236,22 @@ function Navbar() {
             : "shadow-xl border-b-2 border-orange-400/50 py-3"
         }`}
       >
-        {/* Logo with improved visibility and larger size */}
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <div className="relative group">
-            {/* Enhanced outer glow effect */}
-            <div className="absolute -inset-3 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition duration-500 animate-pulse"></div>
-            
-            {/* Larger logo container with enhanced gradient */}
+          <div
+            className="relative group cursor-pointer"
+            onClick={() => handleNavigation("/")}
+          >
+            {/* Outer glow effect */}
+            <div className="absolute -inset-3 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition duration-500"></div>
+
+            {/* Logo container */}
             <div className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 p-2 rounded-full">
-              {/* White inner circle for better contrast */}
               <div className="relative bg-white rounded-full p-1">
                 <img
                   src={Logo}
                   alt="ErastusFX Logo"
-                  className="w-32 h-32 object-contain cursor-pointer transition-all duration-500 
+                  className="w-32 h-32 object-contain transition-all duration-500 
                            group-hover:scale-110 group-hover:rotate-3 
                            rounded-full"
                   style={{
@@ -240,15 +261,14 @@ function Navbar() {
                 />
               </div>
             </div>
-            
-            {/* Enhanced FX badge */}
-            <div className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 
-                          rounded-full flex items-center justify-center shadow-xl animate-bounce border-2 border-white">
+
+            {/* FX badge */}
+            <div
+              className="absolute -top-3 -right-3 w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 
+                          rounded-full flex items-center justify-center shadow-xl border-2 border-white"
+            >
               <span className="text-sm font-extrabold text-gray-900">FX</span>
             </div>
-
-            {/* Additional shine effect for better visibility */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           </div>
         </div>
 
@@ -270,48 +290,48 @@ function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-2 lg:space-x-3">
           {/* Home - Orange Theme */}
-          <Link
-            to="/"
+          <button
+            onClick={() => handleNavigation("/")}
             className="flex items-center space-x-2 px-4 py-3 cursor-pointer bg-gradient-to-r from-orange-500/90 to-orange-600/90 hover:from-orange-600 hover:to-orange-700 rounded-2xl transition-all duration-300 group border-2 border-orange-400/70 shadow-lg hover:shadow-xl backdrop-blur-sm"
           >
             <HomeIcon className="w-5 h-5 text-white group-hover:text-yellow-200 transition-colors" />
             <span className="text-white text-sm lg:text-base font-bold group-hover:text-yellow-200 transition-colors">
               Home
             </span>
-          </Link>
+          </button>
 
           {/* Book Session - Blue Theme */}
-          <Link
-            to="/book-session"
+          <button
+            onClick={() => handleNavigation("/book-session")}
             className="flex items-center space-x-2 px-4 py-3 cursor-pointer bg-gradient-to-r from-blue-500/90 to-blue-600/90 hover:from-blue-600 hover:to-blue-700 rounded-2xl transition-all duration-300 group border-2 border-blue-400/70 shadow-lg hover:shadow-xl backdrop-blur-sm"
           >
             <BookOpenIcon className="w-5 h-5 text-white group-hover:text-cyan-200 transition-colors" />
             <span className="text-white text-sm lg:text-base font-bold group-hover:text-cyan-200 transition-colors">
               Book Session
             </span>
-          </Link>
+          </button>
 
           {/* Learning Material - Purple Theme */}
-          <Link
-            to="/learning-material"
+          <button
+            onClick={() => handleNavigation("/learning-material")}
             className="flex items-center space-x-2 px-4 py-3 cursor-pointer bg-gradient-to-r from-purple-500/90 to-purple-600/90 hover:from-purple-600 hover:to-purple-700 rounded-2xl transition-all duration-300 group border-2 border-purple-400/70 shadow-lg hover:shadow-xl backdrop-blur-sm"
           >
             <AcademicCapIcon className="w-5 h-5 text-white group-hover:text-pink-200 transition-colors" />
             <span className="text-white text-sm lg:text-base font-bold group-hover:text-pink-200 transition-colors">
               Learning Material
             </span>
-          </Link>
+          </button>
 
           {/* Contact Support - Orange Theme */}
-          <Link
-            to="/contact-support"
+          <button
+            onClick={() => handleNavigation("/contact-support")}
             className="flex items-center space-x-2 px-4 py-3 cursor-pointer bg-gradient-to-r from-orange-500/90 to-orange-600/90 hover:from-orange-600 hover:to-orange-700 rounded-2xl transition-all duration-300 group border-2 border-orange-400/70 shadow-lg hover:shadow-xl backdrop-blur-sm"
           >
             <SupportIcon className="w-5 h-5 text-white group-hover:text-yellow-200 transition-colors" />
             <span className="text-white text-sm lg:text-base font-bold group-hover:text-yellow-200 transition-colors">
               Contact Support
             </span>
-          </Link>
+          </button>
 
           {/* Authentication Section - Desktop */}
           <div className="flex items-center space-x-2 lg:space-x-3 ml-2 lg:ml-4 pl-3 lg:pl-4 border-l-2 border-orange-400/30">
@@ -368,9 +388,9 @@ function Navbar() {
             {/* Welcome Header */}
             <div className="px-6 py-5 text-center border-b-2 border-orange-400/30 bg-gradient-to-r from-orange-900/80 to-red-900/80 backdrop-blur-sm">
               <div className="flex items-center justify-center space-x-3 mb-3">
-                {/* Mobile Logo with enhanced visibility */}
+                {/* Mobile Logo */}
                 <div className="relative group">
-                  <div className="absolute -inset-3 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition duration-500 animate-pulse"></div>
+                  <div className="absolute -inset-3 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-full blur-lg opacity-60 group-hover:opacity-80 transition duration-500"></div>
                   <div className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 p-2 rounded-full">
                     <div className="relative bg-white rounded-full p-1">
                       <img
@@ -383,6 +403,7 @@ function Navbar() {
                           filter: "brightness(1.1) contrast(1.2) saturate(1.3)",
                           transformOrigin: "center center",
                         }}
+                        onClick={() => handleNavigation("/")}
                       />
                     </div>
                   </div>
@@ -401,10 +422,9 @@ function Navbar() {
             {/* Navigation Links */}
             <div className="flex-1 flex flex-col p-5 space-y-4 overflow-y-auto">
               {/* Home - Orange Theme */}
-              <Link
-                to="/"
+              <button
+                onClick={() => handleNavigation("/")}
                 className="flex items-center space-x-4 p-4 w-full bg-gradient-to-r from-orange-600/90 to-orange-700/90 hover:from-orange-700 hover:to-orange-800 rounded-xl transition-all duration-300 group border-2 border-orange-500/50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
               >
                 <div className="p-3 bg-white rounded-xl group-hover:bg-yellow-100 transition-all duration-300 flex-shrink-0 shadow-md">
                   <HomeIcon className="w-6 h-6 text-orange-600" />
@@ -418,13 +438,12 @@ function Navbar() {
                   </p>
                 </div>
                 <div className="w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
-              </Link>
+              </button>
 
               {/* Book Session - Blue Theme */}
-              <Link
-                to="/book-session"
+              <button
+                onClick={() => handleNavigation("/book-session")}
                 className="flex items-center space-x-4 p-4 w-full bg-gradient-to-r from-blue-600/90 to-blue-700/90 hover:from-blue-700 hover:to-blue-800 rounded-xl transition-all duration-300 group border-2 border-blue-500/50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
               >
                 <div className="p-3 bg-white rounded-xl group-hover:bg-cyan-100 transition-all duration-300 flex-shrink-0 shadow-md">
                   <BookOpenIcon className="w-6 h-6 text-blue-600" />
@@ -438,13 +457,12 @@ function Navbar() {
                   </p>
                 </div>
                 <div className="w-2 h-2 bg-cyan-300 rounded-full animate-pulse"></div>
-              </Link>
+              </button>
 
               {/* Learning Material - Purple Theme */}
-              <Link
-                to="/learning-material"
+              <button
+                onClick={() => handleNavigation("/learning-material")}
                 className="flex items-center space-x-4 p-4 w-full bg-gradient-to-r from-purple-600/90 to-purple-700/90 hover:from-purple-700 hover:to-purple-800 rounded-xl transition-all duration-300 group border-2 border-purple-500/50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
               >
                 <div className="p-3 bg-white rounded-xl group-hover:bg-pink-100 transition-all duration-300 flex-shrink-0 shadow-md">
                   <AcademicCapIcon className="w-6 h-6 text-purple-600" />
@@ -458,13 +476,12 @@ function Navbar() {
                   </p>
                 </div>
                 <div className="w-2 h-2 bg-pink-300 rounded-full animate-pulse"></div>
-              </Link>
+              </button>
 
               {/* Contact Support - Orange Theme */}
-              <Link
-                to="/contact-support"
+              <button
+                onClick={() => handleNavigation("/contact-support")}
                 className="flex items-center space-x-4 p-4 w-full bg-gradient-to-r from-orange-600/90 to-orange-700/90 hover:from-orange-700 hover:to-orange-800 rounded-xl transition-all duration-300 group border-2 border-orange-500/50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
               >
                 <div className="p-3 bg-white rounded-xl group-hover:bg-yellow-100 transition-all duration-300 flex-shrink-0 shadow-md">
                   <SupportIcon className="w-6 h-6 text-orange-600" />
@@ -478,7 +495,7 @@ function Navbar() {
                   </p>
                 </div>
                 <div className="w-2 h-2 bg-yellow-300 rounded-full animate-pulse"></div>
-              </Link>
+              </button>
 
               {/* Authentication Section - Mobile */}
               <div className="mt-6 space-y-4 pt-6 border-t-2 border-orange-400/30">
@@ -584,7 +601,7 @@ function Navbar() {
                 ERASTUS LEARNING
               </p>
               <p className="text-orange-200 text-base">
-                Excellence in Education © 2024
+                Excellence in Education © 2026
               </p>
             </div>
           </div>
@@ -634,6 +651,17 @@ function Navbar() {
 
       {/* Spacer to prevent content from going under fixed navbar */}
       <div className="h-40 md:h-44"></div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full flex items-center justify-center shadow-2xl hover:shadow-3xl z-40 transition-all duration-300 hover:scale-110 border-2 border-orange-300/50 backdrop-blur-sm"
+          aria-label="Scroll to top"
+        >
+          <ChevronUpIcon className="w-6 h-6" />
+        </button>
+      )}
 
       {/* Authentication Modal */}
       {showAuthModal && (

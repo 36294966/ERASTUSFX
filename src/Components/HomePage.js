@@ -174,7 +174,7 @@ function HomePage() {
   };
 
   const courseModules = [
-    { id: 1, name: "Candle Science", emoji: "📊", color: "bg-red-500" }, // CHANGED EMOJI
+    { id: 1, name: "Candle Science", emoji: "📊", color: "bg-red-500" },
     {
       id: 2,
       name: "Order Block Navigation",
@@ -735,32 +735,38 @@ ${formData.message || "No goals shared"}
       {/* Hero Section with Countdown */}
       <div className="relative overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900">
         <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-          <div className="text-center">
-            {/* Bootcamp Badge */}
-            <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-lg mb-8 shadow-2xl">
-              <FireIcon className="w-6 h-6 mr-2" />
-              🚀 FOREX TRADING MASTERY BOOTCAMP
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-32">
+          <div className="text-center px-2 sm:px-4">
+            {/* Bootcamp Badge - Responsive */}
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-sm sm:text-lg mb-6 sm:mb-8 shadow-2xl">
+              <FireIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
+              <span className="text-xs sm:text-base">
+                🚀 FOREX TRADING MASTERY BOOTCAMP
+              </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            {/* Main Heading - Responsive */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
               Master Professional Forex Trading
-              <span className="block text-yellow-300">Through Consistency🎯</span>
+              <span className="block text-yellow-300 mt-2 sm:mt-4">
+                Through Consistency🎯
+              </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-200 mb-10 max-w-3xl mx-auto">
+            {/* Subtitle - Responsive */}
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 sm:mb-10 max-w-3xl mx-auto px-2 sm:px-4">
               Transform from beginner to confident trader with our comprehensive
               13-module bootcamp. Limited to only 10 students for personalized
               attention! ✨
             </p>
 
-            {/* Slots Availability - NOW DYNAMIC */}
-            <div className="max-w-md mx-auto mb-8 bg-yellow-500/20 backdrop-blur-sm rounded-xl p-4 border border-yellow-400/50">
-              <div className="flex items-center justify-center space-x-4">
-                <div className="text-yellow-300 font-bold text-lg">
+            {/* Slots Availability - Responsive */}
+            <div className="max-w-md mx-auto mb-6 sm:mb-8 bg-yellow-500/20 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-yellow-400/50 mx-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
+                <div className="text-yellow-300 font-bold text-sm sm:text-lg">
                   🚨 Limited Slots: {registeredSlots}/{availableSlots} Filled
                 </div>
-                <div className="w-32 h-3 bg-gray-700 rounded-full overflow-hidden">
+                <div className="w-32 sm:w-40 h-3 bg-gray-700 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000"
                     style={{
@@ -769,42 +775,42 @@ ${formData.message || "No goals shared"}
                   ></div>
                 </div>
               </div>
-              <div className="text-yellow-200 text-sm mt-2">
+              <div className="text-yellow-200 text-xs sm:text-sm mt-2 text-center">
                 🎟️ {availableSlots - registeredSlots} spots remaining - Booking
                 updates in real-time!
               </div>
             </div>
 
-            {/* Countdown Timer - CHANGED TO 12 DAYS */}
-            <div className="max-w-3xl mx-auto mb-12">
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border-2 border-white/20 shadow-2xl">
-                <div className="flex flex-col items-center mb-6">
-                  <div className="flex items-center space-x-2 text-yellow-300 mb-4">
-                    <CalendarIcon className="w-8 h-8" />
-                    <h2 className="text-2xl font-bold">
+            {/* Countdown Timer - Responsive */}
+            <div className="max-w-3xl mx-auto mb-8 sm:mb-12 px-2 sm:px-4">
+              <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border-2 border-white/20 shadow-2xl">
+                <div className="flex flex-col items-center mb-4 sm:mb-6">
+                  <div className="flex items-center space-x-2 text-yellow-300 mb-3 sm:mb-4">
+                    <CalendarIcon className="w-6 h-6 sm:w-8 sm:h-8" />
+                    <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">
                       ⏳ Registration Closes In:
                     </h2>
                   </div>
-                  <p className="text-gray-300 text-lg mb-2">
+                  <p className="text-gray-300 text-sm sm:text-lg mb-2 text-center">
                     Secure your spot! Registration ends in {timeLeft.days} days
                   </p>
                 </div>
 
                 {isLoading ? (
                   <div className="flex justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-yellow-400"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-t-2 border-b-2 border-yellow-400"></div>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                     {Object.entries(timeLeft).map(([unit, value]) => (
                       <div
                         key={unit}
-                        className="bg-gradient-to-br from-gray-900 to-black rounded-xl p-6 text-center transform hover:scale-105 transition-transform duration-300 border border-gray-700"
+                        className="bg-gradient-to-br from-gray-900 to-black rounded-lg sm:rounded-xl p-4 sm:p-6 text-center transform hover:scale-105 transition-transform duration-300 border border-gray-700"
                       >
-                        <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2 font-mono">
+                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-400 mb-1 sm:mb-2 font-mono">
                           {formatTimeUnit(value)}
                         </div>
-                        <div className="text-gray-300 uppercase text-sm tracking-wider">
+                        <div className="text-gray-300 uppercase text-xs sm:text-sm tracking-wider">
                           {unit}
                         </div>
                       </div>
@@ -812,16 +818,16 @@ ${formData.message || "No goals shared"}
                   </div>
                 )}
 
-                {/* Progress Bar - NOW DYNAMIC */}
-                <div className="mt-8">
-                  <div className="flex justify-between text-sm text-gray-300 mb-2">
+                {/* Progress Bar - Responsive */}
+                <div className="mt-6 sm:mt-8">
+                  <div className="flex flex-col sm:flex-row justify-between text-xs sm:text-sm text-gray-300 mb-2 space-y-1 sm:space-y-0">
                     <span>📊 Real-time Registration Progress</span>
                     <span>
                       {enrollmentPercentage}% Filled ({registeredSlots} of{" "}
                       {availableSlots} students enrolled)
                     </span>
                   </div>
-                  <div className="h-3 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-2 sm:h-3 bg-gray-700 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000"
                       style={{
@@ -829,7 +835,7 @@ ${formData.message || "No goals shared"}
                       }}
                     ></div>
                   </div>
-                  <p className="text-center text-gray-300 mt-4 text-sm">
+                  <p className="text-center text-gray-300 mt-3 sm:mt-4 text-xs sm:text-sm">
                     Registration ends in {timeLeft.days} days -{" "}
                     {availableSlots - registeredSlots} spots remaining 🚨
                   </p>
@@ -837,71 +843,74 @@ ${formData.message || "No goals shared"}
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* CTA Buttons - Responsive */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2">
               <button
                 onClick={scrollToBookingSection}
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-full hover:from-orange-600 hover:via-red-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl"
+                className="group relative inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-full hover:from-orange-600 hover:via-red-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl w-full sm:w-auto"
               >
-                <span className="relative z-10">
+                <span className="relative z-10 text-xs sm:text-base">
                   🎯 Book Your Slot Now - Only{" "}
                   {availableSlots - registeredSlots} Left
                 </span>
-                <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+                <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-2 transition-transform" />
                 <div className="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
               </button>
 
-              <button className="inline-flex items-center px-8 py-4 text-lg font-bold text-white border-2 border-yellow-400 rounded-full hover:bg-yellow-400/20 transition-all duration-300 transform hover:scale-105">
-                <ClockIcon className="w-5 h-5 mr-2" />
-                📅 Schedule Consultation
+              <button className="inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-lg font-bold text-white border-2 border-yellow-400 rounded-full hover:bg-yellow-400/20 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+                <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="text-xs sm:text-base">
+                  📅 Schedule Consultation
+                </span>
               </button>
             </div>
 
-            {/* Money Back Guarantee */}
-            <div className="mt-10 inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold shadow-xl">
-              <ShieldCheckIcon className="w-5 h-5 mr-2" />✅ 70% Money Back
-              Guarantee - Not satisfied after 3rd session? Get refund!
+            {/* Money Back Guarantee - Responsive */}
+            <div className="mt-6 sm:mt-8 lg:mt-10 inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold shadow-xl text-xs sm:text-sm lg:text-base">
+              <ShieldCheckIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />✅ 70%
+              Money Back Guarantee - Not satisfied after 3rd session? Get
+              refund!
             </div>
           </div>
         </div>
       </div>
 
       {/* Course Modules Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16">
+        <div className="text-center mb-8 sm:mb-12 px-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             📚 Comprehensive 13-Module Curriculum
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
             Master every aspect of professional forex trading with our
             structured program ✨
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-0">
           {courseModules.map((module) => (
             <div
               key={module.id}
-              className="group bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              className="group bg-gradient-to-br from-white to-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
             >
-              <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-3 sm:space-x-4">
                 <div
-                  className={`flex-shrink-0 w-12 h-12 ${module.color} rounded-xl flex items-center justify-center`}
+                  className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${module.color} rounded-lg sm:rounded-xl flex items-center justify-center`}
                 >
-                  <span className="text-white font-bold text-lg">
+                  <span className="text-white font-bold text-base sm:text-lg">
                     {module.emoji}
                   </span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                <div className="flex-grow">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
                     {module.name}
                   </h3>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-xs sm:text-sm">
                     Master this essential trading concept with practical
                     examples
                   </p>
                 </div>
-                <CheckCircleIcon className="w-6 h-6 text-green-500 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
               </div>
             </div>
           ))}
@@ -909,30 +918,32 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Prerequisites Section */}
-      <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 px-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
               🎯 Prerequisites & Requirements
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
               Everything you need to successfully participate in our bootcamp
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 px-2 sm:px-0">
             {prerequisites.map((item, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:border-white/40 transition-all duration-300"
+                className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-white/40 transition-all duration-300"
               >
-                <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl mb-6 mx-auto">
-                  <span className="text-2xl">{item.emoji}</span>
+                <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 mx-auto">
+                  <span className="text-xl sm:text-2xl">{item.emoji}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 text-center">
                   {item.title}
                 </h3>
-                <p className="text-gray-300 text-center">{item.description}</p>
+                <p className="text-gray-300 text-center text-sm sm:text-base">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -940,99 +951,103 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Flexible Session Plans with Pricing */}
-      <div className="bg-gradient-to-b from-gray-50 to-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-bold mb-6">
-              <CurrencyDollarIcon className="w-6 h-6 mr-2" />
+      <div className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 px-2">
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
+              <CurrencyDollarIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
               💰 CLEAR PRICING & SESSION PLANS
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Choose Your Perfect Learning Plan
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Transparent pricing with incredible value. Compare plans and
               select what works best for you! ✨
             </p>
           </div>
 
-          {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {/* Pricing Cards - Responsive */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 px-2 sm:px-0">
             {sessionPlans.map((plan) => (
               <div
                 key={plan.id}
-                className={`relative rounded-2xl border-2 ${
+                className={`relative rounded-xl sm:rounded-2xl border-2 ${
                   plan.id === selectedPlan
-                    ? "border-blue-500 shadow-2xl transform scale-105 z-10"
+                    ? "border-blue-500 shadow-xl sm:shadow-2xl transform scale-105 z-10"
                     : plan.borderColor
                 } ${
                   plan.bgColor
-                } p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer h-full flex flex-col`}
+                } p-4 sm:p-6 transition-all duration-300 hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 sm:hover:-translate-y-2 cursor-pointer h-full flex flex-col`}
                 onClick={() => setSelectedPlan(plan.id)}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-20">
+                  <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 z-20">
                     <span
-                      className={`${plan.badgeColor} text-white px-4 py-2 rounded-full text-sm font-bold flex items-center shadow-lg`}
+                      className={`${plan.badgeColor} text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center shadow-lg`}
                     >
-                      <StarIcon className="w-4 h-4 mr-2" />
-                      🏆 MOST POPULAR
+                      <StarIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                      <span className="text-xs sm:text-sm">
+                        🏆 MOST POPULAR
+                      </span>
                     </span>
                   </div>
                 )}
 
                 {/* Savings Badge */}
                 {plan.savings && (
-                  <div className="absolute -top-3 right-4 z-10">
-                    <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                  <div className="absolute -top-2 sm:-top-3 right-3 sm:right-4 z-10">
+                    <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold shadow-lg">
                       💸 {plan.savings}
                     </span>
                   </div>
                 )}
 
-                <div className="flex flex-col items-center mb-6">
+                <div className="flex flex-col items-center mb-4 sm:mb-6">
                   <div
-                    className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${plan.color} flex items-center justify-center mb-4 shadow-lg`}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg sm:rounded-2xl bg-gradient-to-r ${plan.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg`}
                   >
-                    <span className="text-3xl">{plan.emoji}</span>
+                    <span className="text-2xl sm:text-3xl">{plan.emoji}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-1 sm:mb-2 text-center">
                     {plan.name}
                   </h3>
-                  <p className="text-gray-600 text-sm text-center">
+                  <p className="text-gray-600 text-xs sm:text-sm text-center">
                     ⏳ {plan.duration} • 📅 {plan.sessions}
                   </p>
                 </div>
 
                 {/* Price Display */}
-                <div className="text-center mb-6">
-                  <div className="mb-4">
-                    <div className="text-3xl font-bold text-gray-900">
+                <div className="text-center mb-4 sm:mb-6">
+                  <div className="mb-3 sm:mb-4">
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
                       💰 Ksh {formatPrice(plan.price)}
                     </div>
-                    <div className="text-gray-600 text-sm mt-1">
+                    <div className="text-gray-600 text-xs sm:text-sm mt-1">
                       One-time payment
                     </div>
                   </div>
                 </div>
 
                 {/* Features */}
-                <div className="space-y-3 mb-6 flex-grow">
-                  <div className="text-sm font-bold text-gray-700 mb-2">
+                <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow">
+                  <div className="text-xs sm:text-sm font-bold text-gray-700 mb-1 sm:mb-2">
                     ✅ What's included:
                   </div>
                   {plan.features.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-2">
-                      <CheckCircleIcon className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+                      <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700 text-xs sm:text-sm">
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
 
                 {/* Select Button */}
                 <button
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 mt-4 ${
+                  className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 mt-3 sm:mt-4 ${
                     plan.id === selectedPlan
                       ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg"
                       : `bg-gradient-to-r ${plan.color} text-white hover:opacity-90 hover:shadow-lg`
@@ -1040,45 +1055,49 @@ ${formData.message || "No goals shared"}
                 >
                   {plan.id === selectedPlan ? (
                     <span className="flex items-center justify-center">
-                      <CheckCircleIcon className="w-6 h-6 mr-2" />✅ Selected
-                      Plan
+                      <CheckCircleIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
+                      <span className="text-xs sm:text-base">
+                        ✅ Selected Plan
+                      </span>
                     </span>
                   ) : (
-                    "📝 Select This Plan"
+                    <span className="text-xs sm:text-base">
+                      📝 Select This Plan
+                    </span>
                   )}
                 </button>
               </div>
             ))}
           </div>
 
-          {/* Time Slot Selection */}
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100 shadow-xl">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 flex items-center justify-center">
-                <ClockIcon className="w-7 h-7 mr-3 text-blue-500" />⏰ Select
-                Your Preferred Time Slot
+          {/* Time Slot Selection - Responsive */}
+          <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-100 shadow-xl mx-2 sm:mx-0">
+            <div className="text-center mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 flex items-center justify-center">
+                <ClockIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-blue-500" />
+                <span>⏰ Select Your Preferred Time Slot</span>
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm sm:text-base">
                 Choose the most convenient time for your live sessions (EAT Time
                 Zone)
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
               {timeSlots.map((slot) => (
                 <button
                   key={slot.time}
                   onClick={() => setSelectedTimeSlot(slot.time)}
-                  className={`py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 ${
+                  className={`py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold transition-all duration-300 transform hover:scale-105 ${
                     selectedTimeSlot === slot.time
                       ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg scale-105"
                       : "bg-white text-gray-800 border-2 border-gray-200 hover:border-blue-400 hover:shadow-md"
                   }`}
                 >
-                  <div className="text-lg">
+                  <div className="text-sm sm:text-base">
                     {slot.emoji} {slot.time}
                   </div>
-                  <div className="text-sm font-normal mt-1 opacity-75">
+                  <div className="text-xs font-normal mt-1 opacity-75">
                     {selectedTimeSlot === slot.time
                       ? "✅ Selected"
                       : "📅 Click to select"}
@@ -1087,22 +1106,22 @@ ${formData.message || "No goals shared"}
               ))}
             </div>
 
-            {/* Selection Summary */}
-            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
+            {/* Selection Summary - Responsive */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-lg">
               <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="mb-4 md:mb-0">
-                  <h4 className="font-bold text-gray-900 mb-2 text-lg">
+                <div className="mb-4 md:mb-0 w-full md:w-auto">
+                  <h4 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">
                     📋 Your Selection:
                   </h4>
-                  <div className="flex items-center space-x-4">
-                    <div className="bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-lg">
-                      <div className="font-bold text-gray-900">
+                  <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
+                    <div className="bg-gradient-to-r from-blue-100 to-purple-100 px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto">
+                      <div className="font-bold text-gray-900 text-sm sm:text-base">
                         {
                           sessionPlans.find((plan) => plan.id === selectedPlan)
                             ?.name
                         }
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-xs sm:text-sm text-gray-600">
                         💰 Ksh{" "}
                         {formatPrice(
                           sessionPlans.find((plan) => plan.id === selectedPlan)
@@ -1110,21 +1129,23 @@ ${formData.message || "No goals shared"}
                         )}
                       </div>
                     </div>
-                    <div className="text-gray-400">→</div>
-                    <div className="bg-gradient-to-r from-green-100 to-emerald-100 px-4 py-2 rounded-lg">
-                      <div className="font-bold text-gray-900">
+                    <div className="text-gray-400 hidden sm:block">→</div>
+                    <div className="bg-gradient-to-r from-green-100 to-emerald-100 px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto">
+                      <div className="font-bold text-gray-900 text-sm sm:text-base">
                         ⏰ {selectedTimeSlot}
                       </div>
-                      <div className="text-sm text-gray-600">Time Slot</div>
+                      <div className="text-xs sm:text-sm text-gray-600">
+                        Time Slot
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="text-right">
-                  <div className="text-sm text-gray-600 mb-1">
+                <div className="text-center md:text-right w-full md:w-auto mt-4 md:mt-0">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-1">
                     💰 Total Investment
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
                     Ksh{" "}
                     {formatPrice(
                       sessionPlans.find((plan) => plan.id === selectedPlan)
@@ -1133,23 +1154,23 @@ ${formData.message || "No goals shared"}
                   </div>
                   <button
                     onClick={scrollToBookingSection}
-                    className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto text-sm sm:text-base"
                   >
                     🎯 Complete Booking
-                    <ArrowRightIcon className="w-5 h-5 ml-2" />
+                    <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </button>
                 </div>
               </div>
 
               {/* Money Back Guarantee */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
                 <div className="flex items-center justify-center">
-                  <ShieldCheckIcon className="w-6 h-6 text-green-500 mr-3" />
+                  <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3" />
                   <div className="text-center">
-                    <div className="font-bold text-gray-900">
+                    <div className="font-bold text-gray-900 text-sm sm:text-base">
                       ✅ 70% Money Back Guarantee Included
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-xs sm:text-sm text-gray-600">
                       Not satisfied after the 3rd session? Get 70% refund! 💸
                     </div>
                   </div>
@@ -1163,37 +1184,37 @@ ${formData.message || "No goals shared"}
       {/* Payment Information Section */}
       <div
         ref={paymentSectionRef}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16"
       >
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12 shadow-xl border border-blue-100">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold mb-6">
-              <CashIcon className="w-6 h-6 mr-2" />
+        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 md:p-12 shadow-xl border border-blue-100">
+          <div className="text-center mb-8 sm:mb-10 px-2">
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
+              <CashIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
               💰 FEE & PAYMENT INFORMATION
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Secure Your Investment Today
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
               Full payment required before training begins with our money-back
               guarantee ✨
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             {/* Payment Details */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <CashIcon className="w-7 h-7 mr-3 text-green-500" />
-                📱 Payment Instructions
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
+                <CashIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-green-500" />
+                <span>📱 Payment Instructions</span>
               </h3>
 
-              <div className="space-y-6">
-                <div className="bg-green-50 p-6 rounded-xl border border-green-200">
-                  <h4 className="font-bold text-gray-900 mb-3">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="bg-green-50 p-4 sm:p-6 rounded-lg sm:rounded-xl border border-green-200">
+                  <h4 className="font-bold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                     📱 M-PESA Payment Steps:
                   </h4>
-                  <ol className="space-y-3 text-gray-700">
+                  <ol className="space-y-2 sm:space-y-3 text-gray-700 text-xs sm:text-sm">
                     <li className="flex items-start">
                       <span className="font-bold mr-2">1.</span>
                       Go to{" "}
@@ -1230,24 +1251,24 @@ ${formData.message || "No goals shared"}
                   </ol>
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-xl border border-blue-200">
-                  <h4 className="font-bold text-gray-900 mb-3">
+                <div className="bg-blue-50 p-4 sm:p-6 rounded-lg sm:rounded-xl border border-blue-200">
+                  <h4 className="font-bold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                     ✅ Confirmation:
                   </h4>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 text-xs sm:text-sm">
                     You will receive an M-PESA confirmation SMS showing payment
                     was sent to:
                   </p>
-                  <p className="font-bold text-gray-900 mt-2 text-lg">
+                  <p className="font-bold text-gray-900 mt-2 text-sm sm:text-base lg:text-lg">
                     👤 Samuel Erastus Ngamau
                   </p>
                 </div>
 
-                <div className="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
-                  <h4 className="font-bold text-gray-900 mb-3">
+                <div className="bg-yellow-50 p-4 sm:p-6 rounded-lg sm:rounded-xl border border-yellow-200">
+                  <h4 className="font-bold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
                     ⚠️ Important Notes:
                   </h4>
-                  <ul className="space-y-2 text-gray-700">
+                  <ul className="space-y-1 sm:space-y-2 text-gray-700 text-xs sm:text-sm">
                     <li className="flex items-start">
                       <span className="text-yellow-500 mr-2">•</span>
                       Payment must be made in full before the first day of
@@ -1268,57 +1289,61 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Money Back Guarantee */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <ShieldCheckIcon className="w-7 h-7 mr-3 text-green-500" />
-                🛡️ Money Back Guarantee
+            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
+                <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-green-500" />
+                <span>🛡️ Money Back Guarantee</span>
               </h3>
 
-              <div className="space-y-6">
-                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-8 rounded-2xl text-center">
-                  <div className="text-5xl font-bold mb-2">70%</div>
-                  <div className="text-xl font-bold mb-4">
+              <div className="space-y-4 sm:space-y-6">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl text-center">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">
+                    70%
+                  </div>
+                  <div className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
                     💰 MONEY BACK GUARANTEE
                   </div>
-                  <p className="text-green-100">
+                  <p className="text-green-100 text-sm sm:text-base">
                     If you're not satisfied with the training after the third
                     session
                   </p>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-                    <CheckCircleIcon className="w-6 h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700 text-sm sm:text-base">
                       ✅ Full course access upon payment
                     </span>
                   </div>
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-                    <CheckCircleIcon className="w-6 h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700 text-sm sm:text-base">
                       ✅ Risk-free investment with guarantee
                     </span>
                   </div>
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-                    <CheckCircleIcon className="w-6 h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700 text-sm sm:text-base">
                       ✅ Immediate enrollment confirmation
                     </span>
                   </div>
                 </div>
 
-                {/* Slot Availability - NOW DYNAMIC */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6 rounded-2xl">
-                  <h4 className="font-bold text-xl mb-3">
+                {/* Slot Availability */}
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl">
+                  <h4 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3">
                     🚨 Real-time Slot Availability
                   </h4>
                   <div className="flex items-center justify-between">
-                    <span>Slots Available:</span>
-                    <span className="font-bold text-2xl">
+                    <span className="text-sm sm:text-base">
+                      Slots Available:
+                    </span>
+                    <span className="font-bold text-xl sm:text-2xl">
                       {registeredSlots} / {availableSlots}
                     </span>
                   </div>
-                  <div className="h-3 bg-white/30 rounded-full overflow-hidden mt-3">
+                  <div className="h-2 sm:h-3 bg-white/30 rounded-full overflow-hidden mt-2 sm:mt-3">
                     <div
                       className="h-full bg-white transition-all duration-1000"
                       style={{
@@ -1326,11 +1351,11 @@ ${formData.message || "No goals shared"}
                       }}
                     ></div>
                   </div>
-                  <p className="text-sm mt-3 text-white/90">
+                  <p className="text-xs sm:text-sm mt-2 sm:mt-3 text-white/90">
                     {availableSlots - registeredSlots} spots remaining -
                     Registration ends in {timeLeft.days} days! ⏳
                   </p>
-                  <div className="text-xs text-white/80 mt-2">
+                  <div className="text-xs text-white/80 mt-1 sm:mt-2">
                     📊 Updates automatically with each booking
                   </div>
                 </div>
@@ -1343,49 +1368,50 @@ ${formData.message || "No goals shared"}
       {/* Booking Form Section */}
       <div
         ref={bookingSectionRef}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+        className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16"
       >
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold mb-6">
-            <CalendarIcon className="w-6 h-6 mr-2" />
+        <div className="text-center mb-8 sm:mb-12 px-2">
+          <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
+            <CalendarIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
             📝 COMPLETE YOUR BOOKING
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Secure Your Forex Trading Journey
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
             Fill in your details below to book your spot ✨
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Column - Topic Selection & Form */}
-          <div className="lg:col-span-2 space-y-8">
-            {/* Topic Selection */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-              <div className="flex items-center mb-8">
-                <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mr-4">
-                  <AcademicCapIcon className="w-6 h-6 text-white" />
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
+            {/* Topic Selection - FIXED: Centered on small screens */}
+            <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100">
+              {/* FIXED SECTION: Centered header for mobile */}
+              <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+                <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4">
+                  <AcademicCapIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
                     1️⃣ Select Topics You Want to Learn
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base mt-2">
                     Choose the trading topics that interest you most (Select at
                     least 3) 🎯
                   </p>
                 </div>
               </div>
 
-              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg sm:rounded-xl border border-blue-200">
                 <div className="flex items-start">
-                  <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-blue-800 mb-1">
+                    <p className="font-semibold text-blue-800 mb-1 text-sm sm:text-base">
                       🎯 Personalized Learning Path
                     </p>
-                    <p className="text-sm text-blue-700">
+                    <p className="text-blue-700 text-xs sm:text-sm">
                       Your selected topics will help us create a customized
                       learning plan just for you.
                     </p>
@@ -1393,51 +1419,51 @@ ${formData.message || "No goals shared"}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {courseModules.map((course) => (
                   <div
                     key={course.id}
                     onClick={() => handleCourseSelection(course.id)}
-                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                    className={`p-3 sm:p-4 rounded-lg sm:rounded-xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 ${
                       selectedCourses.includes(course.id)
                         ? "border-blue-500 bg-blue-50 shadow-lg"
                         : "border-gray-200 hover:border-blue-300"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-1 sm:mb-2">
                       <div
-                        className={`w-8 h-8 ${course.color} rounded-lg flex items-center justify-center`}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 ${course.color} rounded-lg flex items-center justify-center`}
                       >
                         <span className="text-white font-bold text-sm">
                           {course.emoji}
                         </span>
                       </div>
                       {selectedCourses.includes(course.id) && (
-                        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                        <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
                       )}
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-1">
+                    <h3 className="font-bold text-gray-900 mb-1 text-sm sm:text-base">
                       {course.name}
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-gray-600 text-xs sm:text-sm">
                       Master this essential trading concept
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="flex items-center justify-between">
-                  <div className="text-gray-700">
-                    <span className="font-bold">
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
+                <div className="flex flex-col sm:flex-row items-center justify-between">
+                  <div className="text-gray-700 mb-2 sm:mb-0">
+                    <span className="font-bold text-sm sm:text-base">
                       📚 {selectedCourses.length} topics selected
                     </span>
-                    <span className="text-sm text-gray-500 ml-2">
+                    <span className="text-gray-500 text-xs sm:text-sm ml-2">
                       (Minimum: 3 topics)
                     </span>
                   </div>
                   <div
-                    className={`px-4 py-2 rounded-lg ${
+                    className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
                       selectedCourses.length >= 3
                         ? "bg-green-100 text-green-800"
                         : "bg-yellow-100 text-yellow-800"
@@ -1452,29 +1478,30 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Booking Form */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100">
-              <div className="flex items-center mb-8">
-                <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mr-4">
-                  <CalendarIcon className="w-6 h-6 text-white" />
+            <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100">
+              {/* FIXED: Centered header for mobile */}
+              <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+                <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4">
+                  <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
                     2️⃣ Complete Your Details
                   </h2>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base mt-2">
                     Fill in your information to book your spot 📝
                   </p>
                 </div>
               </div>
 
-              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg sm:rounded-xl border border-blue-200">
                 <div className="flex items-start">
-                  <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-blue-800 mb-1">
+                    <p className="font-semibold text-blue-800 mb-1 text-sm sm:text-base">
                       ✅ All Details Will Be Sent To You
                     </p>
-                    <p className="text-sm text-blue-700">
+                    <p className="text-blue-700 text-xs sm:text-sm">
                       After submission, you'll receive ONE confirmation email
                       with all your booking details.
                     </p>
@@ -1482,31 +1509,31 @@ ${formData.message || "No goals shared"}
                 </div>
               </div>
 
-              {/* Success Message - UPDATED WITH SLOT INFO */}
+              {/* Success Message */}
               {submitSuccess && (
-                <div className="mb-6 p-6 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-2xl animate-fadeIn">
-                  <div className="flex items-center">
-                    <CheckCircleIcon className="w-8 h-8 mr-3 flex-shrink-0" />
+                <div className="mb-4 sm:mb-6 p-4 sm:p-6 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg sm:rounded-2xl animate-fadeIn">
+                  <div className="flex items-start">
+                    <CheckCircleIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-bold">
+                      <h3 className="text-lg sm:text-xl font-bold">
                         🎉 Booking Submitted Successfully!
                       </h3>
-                      <p className="mt-1">
+                      <p className="mt-1 text-sm sm:text-base">
                         Your booking details have been sent to Samuel Erastus
                         Ngamau. You'll receive ONE confirmation email.
                       </p>
 
                       {/* Slot Update Info */}
-                      <div className="mt-3 p-3 bg-white/20 rounded-lg">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="font-bold">
+                      <div className="mt-2 sm:mt-3 p-2 sm:p-3 bg-white/20 rounded-lg">
+                        <div className="flex items-center justify-between mb-1 sm:mb-2">
+                          <span className="font-bold text-sm sm:text-base">
                             📊 Slot Status Updated:
                           </span>
-                          <span className="font-bold text-yellow-300">
+                          <span className="font-bold text-yellow-300 text-sm sm:text-base">
                             {registeredSlots} / {availableSlots} filled
                           </span>
                         </div>
-                        <div className="h-2 bg-white/30 rounded-full overflow-hidden">
+                        <div className="h-1.5 sm:h-2 bg-white/30 rounded-full overflow-hidden">
                           <div
                             className="h-full bg-white transition-all duration-1000"
                             style={{
@@ -1514,16 +1541,16 @@ ${formData.message || "No goals shared"}
                             }}
                           ></div>
                         </div>
-                        <p className="text-sm mt-2">
+                        <p className="text-xs sm:text-sm mt-1 sm:mt-2">
                           🎟️ {availableSlots - registeredSlots} spots remaining
                         </p>
                       </div>
 
-                      <div className="mt-3 p-3 bg-white/20 rounded-lg">
-                        <p className="text-sm">
+                      <div className="mt-2 sm:mt-3 p-2 sm:p-3 bg-white/20 rounded-lg">
+                        <p className="text-sm sm:text-base">
                           <strong>📧 Email Sent With:</strong>
                         </p>
-                        <ul className="text-sm mt-1 space-y-1">
+                        <ul className="text-xs sm:text-sm mt-1 space-y-1">
                           <li>👤 Name: {formData.name}</li>
                           <li>📞 Phone: {formData.phone}</li>
                           <li>📧 Email: {formData.email}</li>
@@ -1539,7 +1566,7 @@ ${formData.message || "No goals shared"}
                           </li>
                         </ul>
                       </div>
-                      <p className="text-sm mt-2">
+                      <p className="text-xs sm:text-sm mt-1 sm:mt-2">
                         We'll contact you within 24 hours to confirm your
                         booking. ⏳
                       </p>
@@ -1550,13 +1577,15 @@ ${formData.message || "No goals shared"}
 
               {/* Error Message */}
               {submitError && (
-                <div className="mb-6 p-6 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-2xl animate-fadeIn">
-                  <div className="flex items-center">
-                    <ShieldCheckIcon className="w-8 h-8 mr-3 flex-shrink-0" />
+                <div className="mb-4 sm:mb-6 p-4 sm:p-6 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-lg sm:rounded-2xl animate-fadeIn">
+                  <div className="flex items-start">
+                    <ShieldCheckIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-bold">⚠️ Submission Error</h3>
-                      <p className="mt-1">{submitError}</p>
-                      <p className="text-sm mt-2 opacity-90">
+                      <h3 className="text-lg sm:text-xl font-bold">
+                        ⚠️ Submission Error
+                      </h3>
+                      <p className="mt-1 text-sm sm:text-base">{submitError}</p>
+                      <p className="text-xs sm:text-sm mt-2 opacity-90">
                         Please try again or contact us directly at 📱 0715657800
                       </p>
                     </div>
@@ -1564,8 +1593,8 @@ ${formData.message || "No goals shared"}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-800 mb-2">
                       👤 Full Name *
@@ -1576,7 +1605,7 @@ ${formData.message || "No goals shared"}
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
                       placeholder="John Doe"
                     />
                   </div>
@@ -1590,13 +1619,13 @@ ${formData.message || "No goals shared"}
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
                       placeholder="john@example.com"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-800 mb-2">
                       📞 Phone Number *
@@ -1607,7 +1636,7 @@ ${formData.message || "No goals shared"}
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
                       placeholder="+254 700 000 000"
                     />
                   </div>
@@ -1623,12 +1652,12 @@ ${formData.message || "No goals shared"}
                       required
                       min={getMinDate()}
                       max={getMaxDate()}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-800 mb-2">
                       ⏰ Preferred Time Slot *
@@ -1638,7 +1667,7 @@ ${formData.message || "No goals shared"}
                       value={formData.preferredTime}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
                     >
                       <option value="">Select time slot</option>
                       {timeSlots.map((slot) => (
@@ -1653,15 +1682,15 @@ ${formData.message || "No goals shared"}
                       <label className="block text-sm font-semibold text-gray-800 mb-2">
                         📚 Selected Topics ({selectedCourses.length})
                       </label>
-                      <div className="px-4 py-3 border-2 border-gray-200 rounded-xl bg-gray-50 min-h-[60px]">
+                      <div className="px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-gray-50 min-h-[60px]">
                         {selectedCourses.length > 0 ? (
-                          <div className="flex flex-wrap gap-2">
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {selectedCourses.map((courseId) => {
                               const course = getSelectedCourse(courseId);
                               return course ? (
                                 <span
                                   key={courseId}
-                                  className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
+                                  className="inline-flex items-center px-2 py-1 rounded-full text-xs sm:text-sm bg-blue-100 text-blue-800"
                                 >
                                   {course.emoji} {course.name}
                                 </span>
@@ -1669,7 +1698,7 @@ ${formData.message || "No goals shared"}
                             })}
                           </div>
                         ) : (
-                          <span className="text-gray-500 italic">
+                          <span className="text-gray-500 italic text-sm">
                             No topics selected
                           </span>
                         )}
@@ -1687,7 +1716,7 @@ ${formData.message || "No goals shared"}
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
                     placeholder="Tell us about your trading experience and what you hope to achieve..."
                   ></textarea>
                 </div>
@@ -1706,7 +1735,7 @@ ${formData.message || "No goals shared"}
                       !formData.preferredTime ||
                       registeredSlots >= availableSlots
                     }
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 ${
                       selectedPlan &&
                       selectedCourses.length >= 3 &&
                       !isSubmitting &&
@@ -1722,16 +1751,20 @@ ${formData.message || "No goals shared"}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-b-2 border-white mr-2"></div>
-                        📤 SENDING BOOKING REQUEST...
+                        <div className="animate-spin rounded-full h-5 w-5 sm:h-6 sm:w-6 border-t-2 border-b-2 border-white mr-2"></div>
+                        <span className="text-sm sm:text-base">
+                          📤 SENDING BOOKING REQUEST...
+                        </span>
                       </div>
                     ) : selectedPlan &&
                       selectedCourses.length >= 3 &&
                       registeredSlots < availableSlots ? (
                       <div className="flex items-center justify-center">
-                        <CheckCircleIcon className="w-6 h-6 mr-2" />
-                        🎯 SUBMIT BOOKING REQUEST (
-                        {availableSlots - registeredSlots} spots left)
+                        <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
+                        <span className="text-sm sm:text-base">
+                          🎯 SUBMIT BOOKING REQUEST (
+                          {availableSlots - registeredSlots} spots left)
+                        </span>
                       </div>
                     ) : registeredSlots >= availableSlots ? (
                       "❌ ALL SLOTS FILLED - CONTACT US"
@@ -1741,11 +1774,11 @@ ${formData.message || "No goals shared"}
                   </button>
 
                   <div className="text-center">
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-xs sm:text-sm text-gray-600 mt-2">
                       After submission, you'll receive ONE confirmation email
                       with all details. 📧
                     </p>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
                       📊 Current slots: {registeredSlots}/{availableSlots}{" "}
                       filled • 🎟️ {availableSlots - registeredSlots} remaining
                     </p>
@@ -1753,7 +1786,7 @@ ${formData.message || "No goals shared"}
 
                   <Link
                     to="/"
-                    className="block w-full py-3 bg-gradient-to-r from-gray-500 to-gray-700 text-white rounded-xl font-bold text-center hover:shadow-lg transition-all hover:scale-105"
+                    className="block w-full py-3 bg-gradient-to-r from-gray-500 to-gray-700 text-white rounded-lg sm:rounded-xl font-bold text-center hover:shadow-lg transition-all hover:scale-105 text-sm sm:text-base"
                   >
                     ← Back to Homepage
                   </Link>
@@ -1763,38 +1796,38 @@ ${formData.message || "No goals shared"}
           </div>
 
           {/* Right Column - Order Summary */}
-          <div className="space-y-8">
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Order Summary */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-100 sticky top-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                <ChartBarIconSolid className="w-5 h-5 mr-2 text-blue-600" />
-                📋 Booking Summary
+            <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 sticky top-4 sm:top-8">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
+                <ChartBarIconSolid className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-blue-600" />
+                <span>📋 Booking Summary</span>
               </h3>
 
               {selectedPlan ? (
                 <>
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     {/* Selected Plan */}
-                    <div className="pb-4 border-b border-gray-200">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="font-semibold text-gray-900">
+                    <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                      <div className="flex justify-between items-center mb-1 sm:mb-2">
+                        <div className="font-semibold text-gray-900 text-sm sm:text-base">
                           📋 {getSelectedPlanData()?.name}
                         </div>
-                        <div className="text-lg font-bold text-blue-600">
+                        <div className="text-base sm:text-lg font-bold text-blue-600">
                           💰 Ksh {formatPrice(getSelectedPlanData()?.price)}
                         </div>
                       </div>
-                      <div className="text-sm text-gray-600 flex items-center">
-                        <CalendarIcon className="w-4 h-4 mr-2" />⏳{" "}
-                        {getSelectedPlanData()?.duration}
+                      <div className="text-xs sm:text-sm text-gray-600 flex items-center">
+                        <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                        ⏳ {getSelectedPlanData()?.duration}
                       </div>
                     </div>
 
                     {/* Selected Topics */}
                     {selectedCourses.length > 0 && (
-                      <div className="pb-4 border-b border-gray-200">
-                        <div className="mb-2">
-                          <div className="font-semibold text-gray-900 mb-2">
+                      <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                        <div className="mb-1 sm:mb-2">
+                          <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
                             📚 Selected Topics ({selectedCourses.length})
                           </div>
                           <div className="space-y-1 max-h-32 overflow-y-auto pr-2">
@@ -1803,10 +1836,10 @@ ${formData.message || "No goals shared"}
                               return course ? (
                                 <div
                                   key={courseId}
-                                  className="flex items-center text-sm"
+                                  className="flex items-center text-xs sm:text-sm"
                                 >
                                   <div
-                                    className={`w-2 h-2 rounded-full mr-2 ${course.color}`}
+                                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mr-2 ${course.color}`}
                                   ></div>
                                   <span className="text-gray-700">
                                     {course.emoji} {course.name}
@@ -1821,15 +1854,15 @@ ${formData.message || "No goals shared"}
 
                     {/* Selected Date & Time */}
                     {(formData.preferredDate || formData.preferredTime) && (
-                      <div className="pb-4 border-b border-gray-200">
-                        <div className="mb-2">
-                          <div className="font-semibold text-gray-900 mb-2">
+                      <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                        <div className="mb-1 sm:mb-2">
+                          <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
                             📅 Selected Date & Time
                           </div>
-                          <div className="text-sm text-gray-700 space-y-1">
+                          <div className="text-xs sm:text-sm text-gray-700 space-y-1">
                             {formData.preferredDate && (
                               <div className="flex items-center">
-                                <CalendarIcon className="w-4 h-4 text-blue-500 mr-2 flex-shrink-0" />
+                                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mr-1 sm:mr-2 flex-shrink-0" />
                                 <span>
                                   📅{" "}
                                   {formatDateForEmail(formData.preferredDate)}
@@ -1838,7 +1871,7 @@ ${formData.message || "No goals shared"}
                             )}
                             {formData.preferredTime && (
                               <div className="flex items-center">
-                                <ClockIcon className="w-4 h-4 text-blue-500 mr-2 flex-shrink-0" />
+                                <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mr-1 sm:mr-2 flex-shrink-0" />
                                 <span>⏰ {formData.preferredTime}</span>
                               </div>
                             )}
@@ -1849,12 +1882,12 @@ ${formData.message || "No goals shared"}
 
                     {/* Trading Goals Preview */}
                     {formData.message && (
-                      <div className="pb-4 border-b border-gray-200">
-                        <div className="mb-2">
-                          <div className="font-semibold text-gray-900 mb-2">
+                      <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                        <div className="mb-1 sm:mb-2">
+                          <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
                             🎯 Trading Goals
                           </div>
-                          <div className="text-sm text-gray-700 p-2 bg-gray-50 rounded-lg max-h-24 overflow-y-auto">
+                          <div className="text-xs sm:text-sm text-gray-700 p-2 bg-gray-50 rounded-lg max-h-24 overflow-y-auto">
                             {formData.message.length > 100
                               ? `${formData.message.substring(0, 100)}...`
                               : formData.message}
@@ -1863,20 +1896,20 @@ ${formData.message || "No goals shared"}
                       </div>
                     )}
 
-                    {/* Slot Status - ADDED */}
-                    <div className="pb-4 border-b border-gray-200">
-                      <div className="mb-2">
-                        <div className="font-semibold text-gray-900 mb-2">
+                    {/* Slot Status */}
+                    <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                      <div className="mb-1 sm:mb-2">
+                        <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
                           📊 Slot Availability
                         </div>
-                        <div className="text-sm text-gray-700 space-y-2">
+                        <div className="text-xs sm:text-sm text-gray-700 space-y-1.5 sm:space-y-2">
                           <div className="flex justify-between items-center">
                             <span>Slots Filled:</span>
                             <span className="font-bold">
                               {registeredSlots}/{availableSlots}
                             </span>
                           </div>
-                          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
                             <div
                               className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000"
                               style={{
@@ -1884,7 +1917,7 @@ ${formData.message || "No goals shared"}
                               }}
                             ></div>
                           </div>
-                          <div className="text-center text-sm text-gray-600">
+                          <div className="text-center text-xs sm:text-sm text-gray-600">
                             🎟️ {availableSlots - registeredSlots} spots
                             remaining
                           </div>
@@ -1894,15 +1927,15 @@ ${formData.message || "No goals shared"}
 
                     {/* Client Information Preview */}
                     {formData.name && (
-                      <div className="pt-4">
-                        <div className="mb-4">
-                          <div className="text-sm text-gray-500 mb-1">
+                      <div className="pt-3 sm:pt-4">
+                        <div className="mb-3 sm:mb-4">
+                          <div className="text-xs sm:text-sm text-gray-500 mb-1">
                             👤 Your Information:
                           </div>
-                          <div className="text-sm text-gray-700 space-y-1">
+                          <div className="text-xs sm:text-sm text-gray-700 space-y-1">
                             {formData.name && (
                               <div className="flex items-center">
-                                <CheckCircleIcon className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0" />
                                 <span className="truncate">
                                   {formData.name}
                                 </span>
@@ -1910,13 +1943,13 @@ ${formData.message || "No goals shared"}
                             )}
                             {formData.phone && (
                               <div className="flex items-center">
-                                <CheckCircleIcon className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0" />
                                 <span>📞 {formData.phone}</span>
                               </div>
                             )}
                             {formData.email && (
                               <div className="flex items-center">
-                                <CheckCircleIcon className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0" />
                                 <span className="truncate">
                                   📧 {formData.email}
                                 </span>
@@ -1925,10 +1958,10 @@ ${formData.message || "No goals shared"}
                           </div>
                         </div>
 
-                        <div className="p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-blue-200">
+                        <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-blue-200">
                           <div className="flex items-center">
-                            <PhoneIcon className="w-5 h-5 text-blue-600 mr-2" />
-                            <span className="text-sm font-semibold text-blue-800">
+                            <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-1 sm:mr-2" />
+                            <span className="text-xs sm:text-sm font-semibold text-blue-800">
                               📱 Direct Contact: 0715657800
                             </span>
                           </div>
@@ -1938,11 +1971,11 @@ ${formData.message || "No goals shared"}
                   </div>
 
                   {/* Email Confirmation */}
-                  <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-200">
+                  <div className="mt-4 sm:mt-6 p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg sm:rounded-xl border border-blue-200">
                     <div className="flex items-center">
-                      <CheckCircleIcon className="w-5 h-5 text-blue-600 mr-2" />
+                      <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-1 sm:mr-2" />
                       <div>
-                        <p className="text-sm font-semibold text-blue-800">
+                        <p className="text-xs sm:text-sm font-semibold text-blue-800">
                           📧 Email Confirmation
                         </p>
                         <p className="text-xs text-blue-600">
@@ -1953,32 +1986,52 @@ ${formData.message || "No goals shared"}
                   </div>
 
                   {/* Contact Info */}
-                  <div className="mt-6 p-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl text-white">
-                    <h4 className="font-bold mb-3">📞 Contact Details</h4>
-                    <div className="space-y-2">
+                  <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg sm:rounded-xl text-white">
+                    <h4 className="font-bold mb-2 sm:mb-3 text-sm sm:text-base">
+                      📞 Contact Details
+                    </h4>
+                    <div className="space-y-1.5 sm:space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-green-100">Phone:</span>
-                        <span className="font-bold">📱 0715657800</span>
+                        <span className="text-green-100 text-xs sm:text-sm">
+                          Phone:
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm">
+                          📱 0715657800
+                        </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-green-100">WhatsApp:</span>
-                        <span className="font-bold">💬 0715657800</span>
+                        <span className="text-green-100 text-xs sm:text-sm">
+                          WhatsApp:
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm">
+                          💬 0715657800
+                        </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-green-100">Email Response:</span>
-                        <span className="font-bold">⚡ Instant</span>
+                        <span className="text-green-100 text-xs sm:text-sm">
+                          Email Response:
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm">
+                          ⚡ Instant
+                        </span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-green-100">Call Response:</span>
-                        <span className="font-bold">⏰ 24 Hours</span>
+                        <span className="text-green-100 text-xs sm:text-sm">
+                          Call Response:
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm">
+                          ⏰ 24 Hours
+                        </span>
                       </div>
                     </div>
                   </div>
                 </>
               ) : (
-                <div className="text-center py-8">
-                  <div className="text-gray-400 mb-4">⚠️ No plan selected</div>
-                  <p className="text-gray-500 text-sm">
+                <div className="text-center py-6 sm:py-8">
+                  <div className="text-gray-400 mb-3 sm:mb-4 text-sm">
+                    ⚠️ No plan selected
+                  </div>
+                  <p className="text-gray-500 text-xs sm:text-sm">
                     Select topics and a plan to begin
                   </p>
                 </div>
@@ -1986,29 +2039,39 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Quick Contact Guide */}
-            <div className="bg-gradient-to-br from-blue-500 to-purple-500 rounded-3xl shadow-2xl p-8 text-white">
-              <h3 className="text-xl font-bold mb-6 flex items-center">
-                <PhoneIcon className="w-5 h-5 mr-2" />
-                📱 Quick Contact
+            <div className="bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 text-white">
+              <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
+                <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span>📱 Quick Contact</span>
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <div>
-                  <div className="font-bold mb-1">Contact Number:</div>
-                  <div className="text-3xl font-bold tracking-wider">
+                  <div className="font-bold mb-1 text-sm sm:text-base">
+                    Contact Number:
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-bold tracking-wider">
                     📱 0715657800
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold mb-1">Available:</div>
-                  <div className="text-lg">📅 Mon-Sun, 8AM-10PM</div>
+                  <div className="font-bold mb-1 text-sm sm:text-base">
+                    Available:
+                  </div>
+                  <div className="text-base sm:text-lg">
+                    📅 Mon-Sun, 8AM-10PM
+                  </div>
                 </div>
                 <div>
-                  <div className="font-bold mb-1">Email Response:</div>
-                  <div className="text-2xl font-bold">⚡ Instant</div>
+                  <div className="font-bold mb-1 text-sm sm:text-base">
+                    Email Response:
+                  </div>
+                  <div className="text-xl sm:text-2xl font-bold">
+                    ⚡ Instant
+                  </div>
                 </div>
               </div>
-              <div className="mt-6 p-3 bg-white/20 rounded-lg">
-                <p className="text-sm">
+              <div className="mt-4 sm:mt-6 p-2 sm:p-3 bg-white/20 rounded-lg">
+                <p className="text-xs sm:text-sm">
                   💡 <strong>Need Help with Booking?</strong> Call or WhatsApp
                   us directly at 📱 0715657800
                 </p>
@@ -2018,10 +2081,10 @@ ${formData.message || "No goals shared"}
         </div>
 
         {/* Footer Note */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center space-x-2 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl">
-            <ShieldCheckIcon className="w-5 h-5 text-blue-600" />
-            <p className="text-gray-600">
+        <div className="mt-8 sm:mt-12 text-center px-2">
+          <div className="inline-flex items-center space-x-2 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg sm:rounded-2xl">
+            <ShieldCheckIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+            <p className="text-gray-600 text-xs sm:text-sm">
               <strong>🔒 Secure Booking:</strong> All information is encrypted
               and sent directly to Samuel Erastus Ngamau
             </p>
@@ -2030,21 +2093,23 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Stats Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform"
+              className="bg-gradient-to-br from-white to-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform"
             >
-              <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-4 mx-auto">
-                <span className="text-2xl">{stat.emoji}</span>
+              <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4 mx-auto">
+                <span className="text-xl sm:text-2xl">{stat.emoji}</span>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900 mb-1">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
                   {stat.value}
                 </div>
-                <div className="text-gray-600">{stat.label}</div>
+                <div className="text-gray-600 text-xs sm:text-sm">
+                  {stat.label}
+                </div>
               </div>
             </div>
           ))}
@@ -2052,37 +2117,43 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Final CTA */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+      <div className="bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
             🚀 Ready to Master Forex Trading?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
             Join our exclusive bootcamp with only{" "}
             {availableSlots - registeredSlots} slots remaining. Registration
             ends in {timeLeft.days} days! ⏳
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <button
               onClick={scrollToBookingSection}
-              className="group inline-flex items-center justify-center px-10 py-4 text-lg font-bold text-blue-600 bg-white rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl"
+              className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 text-sm sm:text-lg font-bold text-blue-600 bg-white rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl w-full sm:w-auto"
             >
-              <span>🎯 Book Your Spot Now</span>
-              <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
+              <span className="text-sm sm:text-base">
+                🎯 Book Your Spot Now
+              </span>
+              <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-2 transition-transform" />
             </button>
 
             <div className="text-white text-center">
-              <div className="flex items-center justify-center space-x-2">
-                <ClockIcon className="w-5 h-5" />
-                <span className="font-bold">⏳ Registration Ends In:</span>
-                <span className="font-mono bg-black/30 px-3 py-1 rounded-lg">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
+                <div className="flex items-center space-x-2">
+                  <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="font-bold text-sm sm:text-base">
+                    ⏳ Registration Ends In:
+                  </span>
+                </div>
+                <span className="font-mono bg-black/30 px-2 py-1 sm:px-3 sm:py-1 rounded-lg text-sm">
                   {formatTimeUnit(timeLeft.days)}:
                   {formatTimeUnit(timeLeft.hours)}:
                   {formatTimeUnit(timeLeft.minutes)}
                 </span>
               </div>
-              <p className="text-sm text-blue-200 mt-2">
+              <p className="text-xs sm:text-sm text-blue-200 mt-2">
                 📊 {enrollmentPercentage}% Filled ({registeredSlots} of{" "}
                 {availableSlots} students enrolled)
               </p>
