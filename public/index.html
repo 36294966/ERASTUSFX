@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2E86C1" />
+    <meta
+      name="description"
+      content="ELECTROMATRIX ART DECO LTD. - Premier production design, art direction, event setups, and interior decoration services for the entertainment industry."
+    />
+    <meta name="keywords" content="production design, art direction, film industry, event setups, interior decoration, wallpaper installation, electrical services, wedding events, corporate events" />
+    <meta name="author" content="ELECTROMATRIX ART DECO LTD." />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ELECTROMATRIX ART DECO LTD." />
+    <meta property="og:description" content="Premier production design, art direction, event setups, and interior decoration services for the entertainment industry." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/logo.png" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ELECTROMATRIX ART DECO LTD." />
+    <meta name="twitter:description" content="Premier production design, art direction, event setups, and interior decoration services for the entertainment industry." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/logo.png" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="%PUBLIC_URL%/logo.png" as="image">
+    
+    <style>
+      /* Loading screen styles */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        color: white;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .logo-container {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .circular-logo {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: contain;
+        background: white;
+        padding: 15px;
+        box-shadow: 
+          0 10px 30px rgba(0, 0, 0, 0.3),
+          0 0 0 4px rgba(255, 255, 255, 0.1),
+          0 0 0 8px rgba(255, 255, 255, 0.05);
+        animation: pulse 2s infinite ease-in-out;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .circular-logo::before {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+        animation: rotate 3s linear infinite;
+        z-index: -1;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1.5rem;
+      }
+      
+      .loading-text {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        letter-spacing: 0.5px;
+      }
+      
+      .loading-subtext {
+        font-size: 1rem;
+        opacity: 0.9;
+        text-align: center;
+        max-width: 400px;
+        line-height: 1.5;
+        font-weight: 300;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+      
+      .services-highlight {
+        display: inline-block;
+        background: linear-gradient(45deg, #FFD700, #FFA500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 600;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @keyframes pulse {
+        0% { 
+          transform: scale(1);
+          box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            0 0 0 4px rgba(255, 255, 255, 0.1),
+            0 0 0 8px rgba(255, 255, 255, 0.05);
+        }
+        50% { 
+          transform: scale(1.05);
+          box-shadow: 
+            0 15px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 6px rgba(255, 255, 255, 0.15),
+            0 0 0 12px rgba(255, 255, 255, 0.08);
+        }
+        100% { 
+          transform: scale(1);
+          box-shadow: 
+            0 10px 30px rgba(0, 0, 0, 0.3),
+            0 0 0 4px rgba(255, 255, 255, 0.1),
+            0 0 0 8px rgba(255, 255, 255, 0.05);
+        }
+      }
+      
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Hide loading screen when app loads */
+      .loaded #loading-screen {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-out;
+      }
+      
+      /* Basic body styles */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #f8f9fa;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #2E86C1;
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #1B4F72;
+      }
+      
+      /* Responsive design for mobile */
+      @media (max-width: 768px) {
+        .logo-container {
+          width: 150px;
+          height: 150px;
+        }
+        
+        .loading-text {
+          font-size: 1.3rem;
+        }
+        
+        .loading-subtext {
+          font-size: 0.9rem;
+          max-width: 300px;
+        }
+        
+        .circular-logo {
+          padding: 12px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .logo-container {
+          width: 120px;
+          height: 120px;
+        }
+        
+        .loading-text {
+          font-size: 1.1rem;
+        }
+        
+        .loading-subtext {
+          font-size: 0.8rem;
+          max-width: 280px;
+        }
+        
+        .circular-logo {
+          padding: 10px;
+        }
+      }
+    </style>
+    
+    <title>ELECTROMATRIX ART DECO LTD. - Premier Production Design & Art Direction</title>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="logo-container">
+        <img src="%PUBLIC_URL%/logo.png" alt="ELECTROMATRIX ART DECO LTD. Logo" class="circular-logo" />
+      </div>
+      <div class="loading-spinner"></div>
+      <div class="loading-text">ELECTROMATRIX ART DECO LTD.</div>
+      <div class="loading-subtext">
+        Loading premium services for <span class="services-highlight">production design</span>, 
+        <span class="services-highlight">art direction</span>, and 
+        <span class="services-highlight">event setups</span>...
+      </div>
+    </div>
+    
+    <noscript>
+      <div style="text-align: center; padding: 2rem; background: #2E86C1; color: white; font-family: Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div style="width: 150px; height: 150px; margin-bottom: 2rem;">
+          <img src="%PUBLIC_URL%/logo.png" alt="ELECTROMATRIX ART DECO LTD. Logo" style="width: 100%; height: 100%; border-radius: 50%; object-fit: contain; background: white; padding: 12px; border: 3px solid rgba(255,255,255,0.3);" />
+        </div>
+        <h1 style="margin-bottom: 1.5rem; font-size: 2rem; font-weight: bold;">ELECTROMATRIX ART DECO LTD.</h1>
+        <div style="max-width: 600px; margin: 0 auto; line-height: 1.6; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+          <p style="margin-bottom: 1rem;">
+            <strong style="color: #FFD700;">JavaScript is required to run this application.</strong>
+          </p>
+          <p style="margin-bottom: 1rem;">
+            ELECTROMATRIX ART DECO LTD. is a gateway to providing effective and dynamic services tailored for the
+            entertainment industry, especially the film sector.
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Our expertise includes:
+          </p>
+          <ul style="text-align: left; display: inline-block; margin: 0;">
+            <li>Production design and art direction</li>
+            <li>Advert setups and commercial installations</li>
+            <li>Wedding and corporate events</li>
+            <li>Wallpaper installation</li>
+            <li>Interior decoration</li>
+            <li>Electrical services</li>
+          </ul>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.9;">
+          Please enable JavaScript to experience our full website and explore our premium services.
+        </p>
+      </div>
+    </noscript>
+    
+    <div id="root"></div>
+    
+    <script>
+      // Enhanced loading screen management
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const root = document.getElementById('root');
+        
+        // Preload the logo image to ensure smooth loading
+        const logoImg = new Image();
+        logoImg.src = '%PUBLIC_URL%/logo.png';
+        logoImg.onload = function() {
+          console.log('Logo loaded successfully');
+        };
+        logoImg.onerror = function() {
+          console.log('Logo loading failed, using fallback styling');
+          const circularLogo = document.querySelector('.circular-logo');
+          if (circularLogo) {
+            circularLogo.style.background = 'linear-gradient(45deg, #2E86C1, #1B4F72)';
+            circularLogo.style.display = 'flex';
+            circularLogo.style.justifyContent = 'center';
+            circularLogo.style.alignItems = 'center';
+            circularLogo.style.color = 'white';
+            circularLogo.style.fontWeight = 'bold';
+            circularLogo.style.fontSize = '14px';
+            circularLogo.innerHTML = 'EA';
+          }
+        };
+        
+        // Hide loading screen when React app mounts
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && root.children.length > 0) {
+              setTimeout(function() {
+                document.body.classList.add('loaded');
+                setTimeout(function() {
+                  if (loadingScreen && loadingScreen.parentNode) {
+                    loadingScreen.parentNode.removeChild(loadingScreen);
+                  }
+                }, 500);
+              }, 1500);
+              observer.disconnect();
+            }
+          });
+        });
+        
+        observer.observe(root, { childList: true, subtree: false });
+        
+        // Fallback: hide loading screen after 5 seconds
+        setTimeout(function() {
+          document.body.classList.add('loaded');
+          setTimeout(function() {
+            if (loadingScreen && loadingScreen.parentNode) {
+              loadingScreen.parentNode.removeChild(loadingScreen);
+            }
+          }, 500);
+        }, 5000);
+        
+        // Service Worker Registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('%PUBLIC_URL%/sw.js')
+              .then(function(registration) {
+                console.log('SW registered: ', registration);
+              })
+              .catch(function(registrationError) {
+                console.log('SW registration failed: ', registrationError);
+              });
+          });
+        }
+        
+        // Create circular favicon for browser tabs and bookmarks
+        function createCircularFavicon() {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = 32;
+          canvas.height = 32;
+          
+          // Create circular background
+          ctx.beginPath();
+          ctx.arc(16, 16, 16, 0, 2 * Math.PI);
+          ctx.fillStyle = '#2E86C1';
+          ctx.fill();
+          
+          // Add white border
+          ctx.beginPath();
+          ctx.arc(16, 16, 15, 0, 2 * Math.PI);
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          
+          // Try to add text or use original favicon
+          const favicon = document.querySelector('link[rel="icon"]');
+          if (favicon) {
+            // Use the original logo as favicon - it will be circular due to the link tag
+            console.log('Circular favicon setup complete');
+          }
+        }
+        
+        // Initialize circular favicon
+        createCircularFavicon();
+      });
+      
+      // Enhanced error handling
+      window.addEventListener('error', function(e) {
+        console.error('Application error:', e.error);
+      });
+      
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        if ('performance' in window) {
+          const perfData = window.performance.timing;
+          const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+          console.log('Page load time:', loadTime + 'ms');
+        }
+      });
+      
+      // Add meta tag for circular icon on iOS
+      document.addEventListener('DOMContentLoaded', function() {
+        // Ensure iOS uses circular icon
+        const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+        if (appleIcon) {
+          appleIcon.setAttribute('sizes', '180x180');
+        }
+        
+        // Additional meta for PWA appearance
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (!metaThemeColor) {
+          const newMeta = document.createElement('meta');
+          newMeta.name = 'theme-color';
+          newMeta.content = '#2E86C1';
+          document.head.appendChild(newMeta);
+        }
+      });
+    </script>
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
