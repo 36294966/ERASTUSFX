@@ -16,8 +16,198 @@ const LearningMaterial = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white p-4 md:p-6">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white p-4 md:p-6 relative overflow-hidden">
+      {/* ========== ANIMATED BACKGROUND ELEMENTS ========== */}
+
+      {/* Currency Pair Animated Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* EUR/USD Floating */}
+        <div className="absolute top-10 left-4 md:left-8 animate-float-slow">
+          <div className="bg-gradient-to-r from-blue-500/10 to-blue-600/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-blue-500/30 shadow-lg">
+            <span className="text-blue-300 font-bold text-xs md:text-sm">
+              EUR/USD
+            </span>
+            <span className="ml-2 text-green-400 text-xs">↑1.0875</span>
+          </div>
+        </div>
+
+        {/* GBP/USD Floating */}
+        <div className="absolute top-1/4 right-6 md:right-12 animate-float-medium">
+          <div className="bg-gradient-to-r from-purple-500/10 to-purple-600/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-purple-500/30 shadow-lg">
+            <span className="text-purple-300 font-bold text-xs md:text-sm">
+              GBP/USD
+            </span>
+            <span className="ml-2 text-green-400 text-xs">↑1.2720</span>
+          </div>
+        </div>
+
+        {/* USD/JPY Floating - FIXED TO SHOW GOING UP */}
+        <div className="absolute bottom-1/3 left-10 md:left-20 animate-float-slow-delay">
+          <div className="bg-gradient-to-r from-green-500/10 to-green-600/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-green-500/30 shadow-lg">
+            <span className="text-green-300 font-bold text-xs md:text-sm">
+              USD/JPY
+            </span>
+            <span className="ml-2 text-green-400 text-xs">↑148.25</span>
+          </div>
+        </div>
+
+        {/* Gold (XAU/USD) Floating */}
+        <div className="absolute bottom-20 right-8 md:right-16 animate-float-medium-delay">
+          <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-yellow-500/30 shadow-lg">
+            <span className="text-yellow-300 font-bold text-xs md:text-sm">
+              XAU/USD
+            </span>
+            <span className="ml-2 text-green-400 text-xs">↑2,015.50</span>
+          </div>
+        </div>
+
+        {/* BTC/USD Floating */}
+        <div className="absolute top-1/2 left-1/4 animate-float-slow">
+          <div className="bg-gradient-to-r from-orange-500/10 to-orange-600/10 backdrop-blur-sm px-3 py-1.5 rounded-lg border border-orange-500/30 shadow-lg">
+            <span className="text-orange-300 font-bold text-xs md:text-sm">
+              BTC/USD
+            </span>
+            <span className="ml-2 text-green-400 text-xs">↑42,580</span>
+          </div>
+        </div>
+
+        {/* Candlestick Animations */}
+        <div className="absolute top-16 right-1/4 opacity-20">
+          <div className="flex flex-col items-center space-y-0.5">
+            <div className="w-1 h-3 bg-green-500 rounded"></div>
+            <div className="w-2 h-1 bg-green-500"></div>
+            <div className="w-1 h-4 bg-green-500 rounded"></div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-32 left-1/3 opacity-20">
+          <div className="flex flex-col items-center space-y-0.5">
+            <div className="w-1 h-4 bg-red-500 rounded"></div>
+            <div className="w-2 h-1 bg-red-500"></div>
+            <div className="w-1 h-2 bg-red-500 rounded"></div>
+          </div>
+        </div>
+
+        <div className="absolute top-40 left-16 opacity-20">
+          <div className="flex flex-col items-center space-y-0.5">
+            <div className="w-1 h-5 bg-green-500 rounded"></div>
+            <div className="w-2 h-1 bg-green-500"></div>
+            <div className="w-1 h-3 bg-green-500 rounded"></div>
+          </div>
+        </div>
+
+        {/* Money Bag Animation */}
+        <div className="absolute top-1/3 right-1/3 animate-bounce-slow opacity-30">
+          <div className="text-2xl md:text-3xl">💰</div>
+        </div>
+
+        {/* Rising Market Diagram (Left Side) */}
+        <div className="absolute left-4 bottom-1/4 w-16 md:w-24 opacity-20">
+          <svg viewBox="0 0 100 60" className="w-full h-auto">
+            {/* Grid lines */}
+            <line
+              x1="0"
+              y1="10"
+              x2="100"
+              y2="10"
+              stroke="#374151"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
+            <line
+              x1="0"
+              y1="30"
+              x2="100"
+              y2="30"
+              stroke="#374151"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
+            <line
+              x1="0"
+              y1="50"
+              x2="100"
+              y2="50"
+              stroke="#374151"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
+
+            {/* Rising trend line */}
+            <path
+              d="M0,50 L20,40 L40,30 L60,20 L80,15 L100,10"
+              stroke="#10B981"
+              strokeWidth="2"
+              fill="none"
+              className="animate-draw-line"
+              strokeDasharray="200"
+              strokeDashoffset="200"
+              style={{ animation: "drawLine 2s ease-out forwards" }}
+            />
+
+            {/* Candles */}
+            <rect x="15" y="35" width="8" height="15" fill="#10B981" rx="1" />
+            <rect x="35" y="25" width="8" height="15" fill="#10B981" rx="1" />
+            <rect x="55" y="15" width="8" height="15" fill="#10B981" rx="1" />
+            <rect x="75" y="10" width="8" height="15" fill="#10B981" rx="1" />
+          </svg>
+        </div>
+
+        {/* Falling Market Diagram (Right Side) */}
+        <div className="absolute right-4 top-1/3 w-16 md:w-24 opacity-20">
+          <svg viewBox="0 0 100 60" className="w-full h-auto">
+            {/* Grid lines */}
+            <line
+              x1="0"
+              y1="10"
+              x2="100"
+              y2="10"
+              stroke="#374151"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
+            <line
+              x1="0"
+              y1="30"
+              x2="100"
+              y2="30"
+              stroke="#374151"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
+            <line
+              x1="0"
+              y1="50"
+              x2="100"
+              y2="50"
+              stroke="#374151"
+              strokeWidth="0.5"
+              strokeDasharray="5,5"
+            />
+
+            {/* Falling trend line */}
+            <path
+              d="M0,10 L20,20 L40,30 L60,40 L80,45 L100,50"
+              stroke="#EF4444"
+              strokeWidth="2"
+              fill="none"
+              className="animate-draw-line-delay"
+              strokeDasharray="200"
+              strokeDashoffset="200"
+              style={{ animation: "drawLine 2s ease-out 0.5s forwards" }}
+            />
+
+            {/* Candles */}
+            <rect x="15" y="10" width="8" height="15" fill="#EF4444" rx="1" />
+            <rect x="35" y="20" width="8" height="15" fill="#EF4444" rx="1" />
+            <rect x="55" y="30" width="8" height="15" fill="#EF4444" rx="1" />
+            <rect x="75" y="40" width="8" height="15" fill="#EF4444" rx="1" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <header className="text-center mb-8 md:mb-12">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -30,7 +220,7 @@ const LearningMaterial = () => {
         </header>
 
         {/* ========== ORDER BLOCKS SECTION ========== */}
-        <section className="mb-12 md:mb-16">
+        <section className="mb-12 md:mb-16 relative">
           <div className="flex items-center mb-4 md:mb-6">
             <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-gradient-to-r from-blue-600 to-blue-400 rounded-lg flex items-center justify-center mr-3 md:mr-4">
               <span className="text-xl md:text-2xl lg:text-3xl font-bold">
@@ -1489,6 +1679,93 @@ const LearningMaterial = () => {
           </p>
         </footer>
       </div>
+
+      {/* Add the animation styles */}
+      <style jsx>{`
+        @keyframes float-slow {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(5deg);
+          }
+        }
+
+        @keyframes float-medium {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(-3deg);
+          }
+        }
+
+        @keyframes float-slow-delay {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-25px) rotate(2deg);
+          }
+        }
+
+        @keyframes float-medium-delay {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-18px) rotate(-4deg);
+          }
+        }
+
+        @keyframes bounce-slow {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        @keyframes drawLine {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        .animate-float-slow {
+          animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+          animation: float-medium 4s ease-in-out infinite;
+        }
+
+        .animate-float-slow-delay {
+          animation: float-slow-delay 7s ease-in-out infinite 1s;
+        }
+
+        .animate-float-medium-delay {
+          animation: float-medium-delay 5s ease-in-out infinite 0.5s;
+        }
+
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
+
+        .animate-draw-line {
+          animation: drawLine 2s ease-out forwards;
+        }
+
+        .animate-draw-line-delay {
+          animation: drawLine 2s ease-out 0.5s forwards;
+        }
+      `}</style>
     </div>
   );
 };

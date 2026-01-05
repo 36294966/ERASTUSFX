@@ -363,9 +363,11 @@ function HomePage() {
     { time: "6:00 PM - 8:00 PM", emoji: "🌙" },
   ];
 
-  // Form handling functions
+  // ✅ FIXED: Proper form handling functions
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(`Updating ${name} to: ${value}`); // Debug log
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -731,14 +733,106 @@ ${formData.message || "No goals shared"}
   }, [selectedTimeSlot]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+      {/* Forex Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Animated Candlestick Charts */}
+        <div className="absolute top-10 left-5 w-24 h-32 opacity-10 animate-float-slow">
+          <div className="relative w-full h-full">
+            <div className="absolute w-1/2 h-4/5 bg-green-400 rounded-t left-1/4 animate-pulse"></div>
+            <div className="absolute w-1/2 h-1/5 bg-red-400 rounded-b left-1/4 animate-pulse delay-300"></div>
+            <div className="absolute w-1 h-full bg-gray-600 left-1/2 transform -translate-x-1/2"></div>
+          </div>
+        </div>
+
+        <div className="absolute top-1/4 right-10 w-20 h-40 opacity-10 animate-float-medium">
+          <div className="relative w-full h-full">
+            <div className="absolute w-1/3 h-3/4 bg-green-400 rounded-t left-1/3 animate-pulse delay-100"></div>
+            <div className="absolute w-1/3 h-1/4 bg-red-400 rounded-b left-1/3 animate-pulse delay-400"></div>
+            <div className="absolute w-0.5 h-full bg-gray-600 left-1/2 transform -translate-x-1/2"></div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-1/3 left-20 w-32 h-24 opacity-10 animate-float-fast">
+          <div className="relative w-full h-full">
+            <div className="absolute w-2/5 h-4/5 bg-green-400 rounded-t left-30% animate-pulse delay-200"></div>
+            <div className="absolute w-2/5 h-1/5 bg-red-400 rounded-b left-30% animate-pulse delay-500"></div>
+            <div className="absolute w-1 h-full bg-gray-600 left-1/2 transform -translate-x-1/2"></div>
+          </div>
+        </div>
+
+        {/* Floating Currency Symbols */}
+        <div className="absolute top-20 right-1/4 text-4xl opacity-5 animate-float-slow">💱</div>
+        <div className="absolute bottom-40 left-1/4 text-5xl opacity-5 animate-float-medium">💰</div>
+        <div className="absolute top-2/3 right-1/3 text-6xl opacity-5 animate-float-fast">📈</div>
+        <div className="absolute top-1/2 left-10 text-4xl opacity-5 animate-float-slow">📊</div>
+        <div className="absolute bottom-20 right-20 text-5xl opacity-5 animate-float-medium">💹</div>
+
+        {/* Animated Trading Charts */}
+        <div className="absolute inset-0">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            {/* Animated Chart Lines */}
+            <path
+              d="M0,300 Q150,250 300,280 T600,260 T900,290 T1200,270"
+              stroke="rgba(59, 130, 246, 0.1)"
+              strokeWidth="2"
+              fill="none"
+              className="animate-chart-line"
+            />
+            <path
+              d="M0,350 Q150,320 300,340 T600,310 T900,340 T1200,320"
+              stroke="rgba(34, 197, 94, 0.1)"
+              strokeWidth="2"
+              fill="none"
+              className="animate-chart-line-delayed"
+            />
+          </svg>
+        </div>
+
+        {/* Grid Pattern */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          animation: 'grid-move 20s linear infinite'
+        }}></div>
+
+        {/* Animated Particles */}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className={`absolute w-1 h-1 bg-blue-400 rounded-full opacity-30 animate-float-particle`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${5 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+
+        {/* Price Tickers */}
+        <div className="absolute top-5 left-0 right-0 overflow-hidden opacity-10">
+          <div className="flex animate-marquee whitespace-nowrap">
+            <span className="mx-8 text-green-400">EUR/USD ▲ 1.0850</span>
+            <span className="mx-8 text-red-400">GBP/USD ▼ 1.2650</span>
+            <span className="mx-8 text-green-400">USD/JPY ▲ 147.50</span>
+            <span className="mx-8 text-green-400">XAU/USD ▲ 2030.50</span>
+            <span className="mx-8 text-red-400">BTC/USD ▼ 42,500</span>
+            <span className="mx-8 text-green-400">ETH/USD ▲ 2,250</span>
+          </div>
+        </div>
+      </div>
+
       {/* Hero Section with Countdown */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900">
-        <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-32">
+      <div className="relative overflow-hidden bg-gradient-to-r from-blue-900/80 via-indigo-800/80 to-purple-900/80 backdrop-blur-sm">
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-32 z-10">
           <div className="text-center px-2 sm:px-4">
             {/* Bootcamp Badge - Responsive */}
-            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-sm sm:text-lg mb-6 sm:mb-8 shadow-2xl">
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-sm sm:text-lg mb-6 sm:mb-8 shadow-2xl animate-pulse">
               <FireIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
               <span className="text-xs sm:text-base">
                 🚀 FOREX TRADING MASTERY BOOTCAMP
@@ -746,29 +840,29 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Main Heading - Responsive */}
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2 animate-slide-up">
               Master Professional Forex Trading
-              <span className="block text-yellow-300 mt-2 sm:mt-4">
+              <span className="block text-yellow-300 mt-2 sm:mt-4 animate-glow">
                 Through Consistency🎯
               </span>
             </h1>
 
             {/* Subtitle - Responsive */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 sm:mb-10 max-w-3xl mx-auto px-2 sm:px-4">
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-8 sm:mb-10 max-w-3xl mx-auto px-2 sm:px-4 animate-fade-in">
               Transform from beginner to confident trader with our comprehensive
               13-module bootcamp. Limited to only 10 students for personalized
               attention! ✨
             </p>
 
             {/* Slots Availability - Responsive */}
-            <div className="max-w-md mx-auto mb-6 sm:mb-8 bg-yellow-500/20 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-yellow-400/50 mx-2">
+            <div className="max-w-md mx-auto mb-6 sm:mb-8 bg-yellow-500/20 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-yellow-400/50 mx-2 animate-pulse-slow">
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-                <div className="text-yellow-300 font-bold text-sm sm:text-lg">
+                <div className="text-yellow-300 font-bold text-sm sm:text-lg animate-bounce">
                   🚨 Limited Slots: {registeredSlots}/{availableSlots} Filled
                 </div>
                 <div className="w-32 sm:w-40 h-3 bg-gray-700 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000"
+                    className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000 animate-progress"
                     style={{
                       width: `${enrollmentPercentage}%`,
                     }}
@@ -782,11 +876,11 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Countdown Timer - Responsive */}
-            <div className="max-w-3xl mx-auto mb-8 sm:mb-12 px-2 sm:px-4">
+            <div className="max-w-3xl mx-auto mb-8 sm:mb-12 px-2 sm:px-4 animate-slide-up-delayed">
               <div className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border-2 border-white/20 shadow-2xl">
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                   <div className="flex items-center space-x-2 text-yellow-300 mb-3 sm:mb-4">
-                    <CalendarIcon className="w-6 h-6 sm:w-8 sm:h-8" />
+                    <CalendarIcon className="w-6 h-6 sm:w-8 sm:h-8 animate-pulse" />
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-bold">
                       ⏳ Registration Closes In:
                     </h2>
@@ -805,9 +899,9 @@ ${formData.message || "No goals shared"}
                     {Object.entries(timeLeft).map(([unit, value]) => (
                       <div
                         key={unit}
-                        className="bg-gradient-to-br from-gray-900 to-black rounded-lg sm:rounded-xl p-4 sm:p-6 text-center transform hover:scale-105 transition-transform duration-300 border border-gray-700"
+                        className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6 text-center transform hover:scale-105 transition-transform duration-300 border border-gray-700 animate-pulse-slow"
                       >
-                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-400 mb-1 sm:mb-2 font-mono">
+                        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-400 mb-1 sm:mb-2 font-mono animate-count">
                           {formatTimeUnit(value)}
                         </div>
                         <div className="text-gray-300 uppercase text-xs sm:text-sm tracking-wider">
@@ -829,7 +923,7 @@ ${formData.message || "No goals shared"}
                   </div>
                   <div className="h-2 sm:h-3 bg-gray-700 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000"
+                      className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000 animate-progress"
                       style={{
                         width: `${enrollmentPercentage}%`,
                       }}
@@ -844,10 +938,10 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* CTA Buttons - Responsive */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-2 animate-bounce-in">
               <button
                 onClick={scrollToBookingSection}
-                className="group relative inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-full hover:from-orange-600 hover:via-red-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl w-full sm:w-auto"
+                className="group relative inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-lg font-bold text-white bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 rounded-full hover:from-orange-600 hover:via-red-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-3xl w-full sm:w-auto animate-pulse-glow"
               >
                 <span className="relative z-10 text-xs sm:text-base">
                   🎯 Book Your Slot Now - Only{" "}
@@ -857,7 +951,7 @@ ${formData.message || "No goals shared"}
                 <div className="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:blur-2xl transition-all"></div>
               </button>
 
-              <button className="inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-lg font-bold text-white border-2 border-yellow-400 rounded-full hover:bg-yellow-400/20 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto">
+              <button className="inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-lg font-bold text-white border-2 border-yellow-400 rounded-full hover:bg-yellow-400/20 transition-all duration-300 transform hover:scale-105 animate-pulse-slow w-full sm:w-auto">
                 <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 <span className="text-xs sm:text-base">
                   📅 Schedule Consultation
@@ -866,7 +960,7 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Money Back Guarantee - Responsive */}
-            <div className="mt-6 sm:mt-8 lg:mt-10 inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold shadow-xl text-xs sm:text-sm lg:text-base">
+            <div className="mt-6 sm:mt-8 lg:mt-10 inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold shadow-xl text-xs sm:text-sm lg:text-base animate-pulse-slow">
               <ShieldCheckIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />✅ 70%
               Money Back Guarantee - Not satisfied after 3rd session? Get
               refund!
@@ -876,41 +970,42 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Course Modules Section */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16">
-        <div className="text-center mb-8 sm:mb-12 px-2">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16 relative z-10">
+        <div className="text-center mb-8 sm:mb-12 px-2 animate-slide-up">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
             📚 Comprehensive 13-Module Curriculum
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
             Master every aspect of professional forex trading with our
             structured program ✨
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-0">
-          {courseModules.map((module) => (
+          {courseModules.map((module, index) => (
             <div
               key={module.id}
-              className="group bg-gradient-to-br from-white to-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700 transform hover:-translate-y-1 hover:scale-105 animate-slide-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-start space-x-3 sm:space-x-4">
                 <div
-                  className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${module.color} rounded-lg sm:rounded-xl flex items-center justify-center`}
+                  className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 ${module.color} rounded-lg sm:rounded-xl flex items-center justify-center animate-pulse`}
                 >
                   <span className="text-white font-bold text-base sm:text-lg">
                     {module.emoji}
                   </span>
                 </div>
                 <div className="flex-grow">
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 sm:mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">
                     {module.name}
                   </h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">
+                  <p className="text-gray-400 text-xs sm:text-sm">
                     Master this essential trading concept with practical
                     examples
                   </p>
                 </div>
-                <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
+                <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-1 animate-ping" />
               </div>
             </div>
           ))}
@@ -918,9 +1013,9 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Prerequisites Section */}
-      <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-12 sm:py-16 lg:py-20">
+      <div className="bg-gradient-to-r from-gray-900/80 to-gray-800/80 backdrop-blur-sm py-12 sm:py-16 lg:py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 px-2">
+          <div className="text-center mb-8 sm:mb-12 px-2 animate-slide-up">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
               🎯 Prerequisites & Requirements
             </h2>
@@ -933,9 +1028,10 @@ ${formData.message || "No goals shared"}
             {prerequisites.map((item, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-white/40 transition-all duration-300"
+                className="bg-white/10 backdrop-blur-lg rounded-xl sm:rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-white/40 transition-all duration-300 transform hover:scale-105 animate-slide-up-delayed"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 mx-auto">
+                <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 mx-auto animate-bounce">
                   <span className="text-xl sm:text-2xl">{item.emoji}</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 text-center">
@@ -951,17 +1047,17 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Flexible Session Plans with Pricing */}
-      <div className="bg-gradient-to-b from-gray-50 to-white py-12 sm:py-16 lg:py-20">
+      <div className="bg-gradient-to-b from-gray-900/50 to-gray-800/50 backdrop-blur-sm py-12 sm:py-16 lg:py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 px-2">
-            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
+          <div className="text-center mb-8 sm:mb-12 px-2 animate-slide-up">
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base animate-pulse">
               <CurrencyDollarIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
               💰 CLEAR PRICING & SESSION PLANS
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
               Choose Your Perfect Learning Plan
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
               Transparent pricing with incredible value. Compare plans and
               select what works best for you! ✨
             </p>
@@ -969,7 +1065,7 @@ ${formData.message || "No goals shared"}
 
           {/* Pricing Cards - Responsive */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 px-2 sm:px-0">
-            {sessionPlans.map((plan) => (
+            {sessionPlans.map((plan, index) => (
               <div
                 key={plan.id}
                 className={`relative rounded-xl sm:rounded-2xl border-2 ${
@@ -978,12 +1074,13 @@ ${formData.message || "No goals shared"}
                     : plan.borderColor
                 } ${
                   plan.bgColor
-                } p-4 sm:p-6 transition-all duration-300 hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 sm:hover:-translate-y-2 cursor-pointer h-full flex flex-col`}
+                } p-4 sm:p-6 transition-all duration-300 hover:shadow-lg sm:hover:shadow-xl hover:-translate-y-1 sm:hover:-translate-y-2 cursor-pointer h-full flex flex-col animate-slide-up`}
                 onClick={() => setSelectedPlan(plan.id)}
+                style={{ animationDelay: `${index * 0.15}s` }}
               >
                 {/* Popular Badge */}
                 {plan.popular && (
-                  <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 z-20">
+                  <div className="absolute -top-2 sm:-top-3 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
                     <span
                       className={`${plan.badgeColor} text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-bold flex items-center shadow-lg`}
                     >
@@ -997,7 +1094,7 @@ ${formData.message || "No goals shared"}
 
                 {/* Savings Badge */}
                 {plan.savings && (
-                  <div className="absolute -top-2 sm:-top-3 right-3 sm:right-4 z-10">
+                  <div className="absolute -top-2 sm:-top-3 right-3 sm:right-4 z-10 animate-pulse">
                     <span className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-bold shadow-lg">
                       💸 {plan.savings}
                     </span>
@@ -1006,7 +1103,7 @@ ${formData.message || "No goals shared"}
 
                 <div className="flex flex-col items-center mb-4 sm:mb-6">
                   <div
-                    className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg sm:rounded-2xl bg-gradient-to-r ${plan.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg`}
+                    className={`w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg sm:rounded-2xl bg-gradient-to-r ${plan.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg animate-pulse`}
                   >
                     <span className="text-2xl sm:text-3xl">{plan.emoji}</span>
                   </div>
@@ -1037,7 +1134,7 @@ ${formData.message || "No goals shared"}
                   </div>
                   {plan.features.map((feature, index) => (
                     <div key={index} className="flex items-start space-x-2">
-                      <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                      <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0 mt-0.5 animate-pulse" />
                       <span className="text-gray-700 text-xs sm:text-sm">
                         {feature}
                       </span>
@@ -1047,7 +1144,7 @@ ${formData.message || "No goals shared"}
 
                 {/* Select Button */}
                 <button
-                  className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 mt-3 sm:mt-4 ${
+                  className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 mt-3 sm:mt-4 animate-pulse ${
                     plan.id === selectedPlan
                       ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg"
                       : `bg-gradient-to-r ${plan.color} text-white hover:opacity-90 hover:shadow-lg`
@@ -1071,28 +1168,29 @@ ${formData.message || "No goals shared"}
           </div>
 
           {/* Time Slot Selection - Responsive */}
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-100 shadow-xl mx-2 sm:mx-0">
+          <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-blue-500/30 shadow-xl mx-2 sm:mx-0 animate-slide-up-delayed">
             <div className="text-center mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 flex items-center justify-center">
-                <ClockIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-blue-500" />
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3 flex items-center justify-center">
+                <ClockIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-blue-500 animate-pulse" />
                 <span>⏰ Select Your Preferred Time Slot</span>
               </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
+              <p className="text-gray-300 text-sm sm:text-base">
                 Choose the most convenient time for your live sessions (EAT Time
                 Zone)
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
-              {timeSlots.map((slot) => (
+              {timeSlots.map((slot, index) => (
                 <button
                   key={slot.time}
                   onClick={() => setSelectedTimeSlot(slot.time)}
-                  className={`py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold transition-all duration-300 transform hover:scale-105 ${
+                  className={`py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold transition-all duration-300 transform hover:scale-105 animate-slide-up ${
                     selectedTimeSlot === slot.time
-                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg scale-105"
-                      : "bg-white text-gray-800 border-2 border-gray-200 hover:border-blue-400 hover:shadow-md"
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg scale-105 animate-pulse"
+                      : "bg-white/10 text-white border-2 border-white/20 hover:border-blue-400 hover:shadow-md"
                   }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="text-sm sm:text-base">
                     {slot.emoji} {slot.time}
@@ -1107,21 +1205,21 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Selection Summary - Responsive */}
-            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-lg">
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-700 shadow-lg">
               <div className="flex flex-col md:flex-row items-center justify-between">
                 <div className="mb-4 md:mb-0 w-full md:w-auto">
-                  <h4 className="font-bold text-gray-900 mb-2 text-base sm:text-lg">
+                  <h4 className="font-bold text-white mb-2 text-base sm:text-lg">
                     📋 Your Selection:
                   </h4>
                   <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
-                    <div className="bg-gradient-to-r from-blue-100 to-purple-100 px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto">
-                      <div className="font-bold text-gray-900 text-sm sm:text-base">
+                    <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto animate-pulse">
+                      <div className="font-bold text-white text-sm sm:text-base">
                         {
                           sessionPlans.find((plan) => plan.id === selectedPlan)
                             ?.name
                         }
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-600">
+                      <div className="text-xs sm:text-sm text-gray-300">
                         💰 Ksh{" "}
                         {formatPrice(
                           sessionPlans.find((plan) => plan.id === selectedPlan)
@@ -1129,12 +1227,14 @@ ${formData.message || "No goals shared"}
                         )}
                       </div>
                     </div>
-                    <div className="text-gray-400 hidden sm:block">→</div>
-                    <div className="bg-gradient-to-r from-green-100 to-emerald-100 px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto">
-                      <div className="font-bold text-gray-900 text-sm sm:text-base">
+                    <div className="text-gray-400 hidden sm:block animate-pulse">
+                      →
+                    </div>
+                    <div className="bg-gradient-to-r from-green-900/50 to-emerald-900/50 backdrop-blur-sm px-3 py-2 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto animate-pulse">
+                      <div className="font-bold text-white text-sm sm:text-base">
                         ⏰ {selectedTimeSlot}
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-600">
+                      <div className="text-xs sm:text-sm text-gray-300">
                         Time Slot
                       </div>
                     </div>
@@ -1142,10 +1242,10 @@ ${formData.message || "No goals shared"}
                 </div>
 
                 <div className="text-center md:text-right w-full md:w-auto mt-4 md:mt-0">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-1">
+                  <div className="text-xs sm:text-sm text-gray-300 mb-1">
                     💰 Total Investment
                   </div>
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
                     Ksh{" "}
                     {formatPrice(
                       sessionPlans.find((plan) => plan.id === selectedPlan)
@@ -1154,7 +1254,7 @@ ${formData.message || "No goals shared"}
                   </div>
                   <button
                     onClick={scrollToBookingSection}
-                    className="inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto text-sm sm:text-base"
+                    className="inline-flex items-center justify-center px-4 py-3 sm:px-6 sm:py-4 lg:px-8 lg:py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-full hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto text-sm sm:text-base animate-pulse-glow"
                   >
                     🎯 Complete Booking
                     <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
@@ -1163,14 +1263,14 @@ ${formData.message || "No goals shared"}
               </div>
 
               {/* Money Back Guarantee */}
-              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-700">
                 <div className="flex items-center justify-center">
-                  <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3" />
+                  <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 mr-2 sm:mr-3 animate-pulse" />
                   <div className="text-center">
-                    <div className="font-bold text-gray-900 text-sm sm:text-base">
+                    <div className="font-bold text-white text-sm sm:text-base">
                       ✅ 70% Money Back Guarantee Included
                     </div>
-                    <div className="text-xs sm:text-sm text-gray-600">
+                    <div className="text-xs sm:text-sm text-gray-300">
                       Not satisfied after the 3rd session? Get 70% refund! 💸
                     </div>
                   </div>
@@ -1184,18 +1284,18 @@ ${formData.message || "No goals shared"}
       {/* Payment Information Section */}
       <div
         ref={paymentSectionRef}
-        className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16"
+        className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16 relative z-10"
       >
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 md:p-12 shadow-xl border border-blue-100">
+        <div className="bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 md:p-12 shadow-xl border border-blue-500/30 animate-slide-up">
           <div className="text-center mb-8 sm:mb-10 px-2">
-            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
+            <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base animate-pulse">
               <CashIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
               💰 FEE & PAYMENT INFORMATION
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
               Secure Your Investment Today
             </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
               Full payment required before training begins with our money-back
               guarantee ✨
             </p>
@@ -1203,83 +1303,83 @@ ${formData.message || "No goals shared"}
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
             {/* Payment Details */}
-            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
-                <CashIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-green-500" />
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg animate-slide-up">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                <CashIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-green-500 animate-pulse" />
                 <span>📱 Payment Instructions</span>
               </h3>
 
               <div className="space-y-4 sm:space-y-6">
-                <div className="bg-green-50 p-4 sm:p-6 rounded-lg sm:rounded-xl border border-green-200">
-                  <h4 className="font-bold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
+                <div className="bg-green-900/30 backdrop-blur-sm p-4 sm:p-6 rounded-lg sm:rounded-xl border border-green-500/30 animate-pulse">
+                  <h4 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
                     📱 M-PESA Payment Steps:
                   </h4>
-                  <ol className="space-y-2 sm:space-y-3 text-gray-700 text-xs sm:text-sm">
-                    <li className="flex items-start">
+                  <ol className="space-y-2 sm:space-y-3 text-gray-300 text-xs sm:text-sm">
+                    <li className="flex items-start animate-slide-left" style={{ animationDelay: "0.1s" }}>
                       <span className="font-bold mr-2">1.</span>
                       Go to{" "}
-                      <span className="font-bold text-blue-600">M-PESA</span> on
+                      <span className="font-bold text-blue-400">M-PESA</span> on
                       your phone
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-left" style={{ animationDelay: "0.2s" }}>
                       <span className="font-bold mr-2">2.</span>
                       Select{" "}
-                      <span className="font-bold text-green-600">
+                      <span className="font-bold text-green-400">
                         "Send Money"
                       </span>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-left" style={{ animationDelay: "0.3s" }}>
                       <span className="font-bold mr-2">3.</span>
                       Enter phone number:{" "}
-                      <span className="font-bold text-red-600">0715657800</span>
+                      <span className="font-bold text-red-400">0715657800</span>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-left" style={{ animationDelay: "0.4s" }}>
                       <span className="font-bold mr-2">4.</span>
                       Enter the full course amount
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-left" style={{ animationDelay: "0.5s" }}>
                       <span className="font-bold mr-2">5.</span>
                       Enter your{" "}
-                      <span className="font-bold text-purple-600">
+                      <span className="font-bold text-purple-400">
                         M-PESA PIN
                       </span>
                     </li>
-                    <li className="flex items-start">
+                    <li className="flex items-start animate-slide-left" style={{ animationDelay: "0.6s" }}>
                       <span className="font-bold mr-2">6.</span>
                       Confirm transaction ✅
                     </li>
                   </ol>
                 </div>
 
-                <div className="bg-blue-50 p-4 sm:p-6 rounded-lg sm:rounded-xl border border-blue-200">
-                  <h4 className="font-bold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
+                <div className="bg-blue-900/30 backdrop-blur-sm p-4 sm:p-6 rounded-lg sm:rounded-xl border border-blue-500/30 animate-pulse">
+                  <h4 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
                     ✅ Confirmation:
                   </h4>
-                  <p className="text-gray-700 text-xs sm:text-sm">
+                  <p className="text-gray-300 text-xs sm:text-sm">
                     You will receive an M-PESA confirmation SMS showing payment
                     was sent to:
                   </p>
-                  <p className="font-bold text-gray-900 mt-2 text-sm sm:text-base lg:text-lg">
+                  <p className="font-bold text-white mt-2 text-sm sm:text-base lg:text-lg animate-pulse">
                     👤 Samuel Erastus Ngamau
                   </p>
                 </div>
 
-                <div className="bg-yellow-50 p-4 sm:p-6 rounded-lg sm:rounded-xl border border-yellow-200">
-                  <h4 className="font-bold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">
+                <div className="bg-yellow-900/30 backdrop-blur-sm p-4 sm:p-6 rounded-lg sm:rounded-xl border border-yellow-500/30 animate-pulse">
+                  <h4 className="font-bold text-white mb-2 sm:mb-3 text-sm sm:text-base">
                     ⚠️ Important Notes:
                   </h4>
-                  <ul className="space-y-1 sm:space-y-2 text-gray-700 text-xs sm:text-sm">
-                    <li className="flex items-start">
-                      <span className="text-yellow-500 mr-2">•</span>
+                  <ul className="space-y-1 sm:space-y-2 text-gray-300 text-xs sm:text-sm">
+                    <li className="flex items-start animate-slide-right" style={{ animationDelay: "0.1s" }}>
+                      <span className="text-yellow-400 mr-2">•</span>
                       Payment must be made in full before the first day of
                       training
                     </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow-500 mr-2">•</span>
+                    <li className="flex items-start animate-slide-right" style={{ animationDelay: "0.2s" }}>
+                      <span className="text-yellow-400 mr-2">•</span>
                       Keep your M-PESA confirmation message for reference
                     </li>
-                    <li className="flex items-start">
-                      <span className="text-yellow-500 mr-2">•</span>
+                    <li className="flex items-start animate-slide-right" style={{ animationDelay: "0.3s" }}>
+                      <span className="text-yellow-400 mr-2">•</span>
                       Contact support if you don't receive confirmation within 5
                       minutes
                     </li>
@@ -1289,14 +1389,14 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Money Back Guarantee */}
-            <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center">
-                <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-green-500" />
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg animate-slide-up-delayed">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                <ShieldCheckIcon className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mr-2 sm:mr-3 text-green-500 animate-pulse" />
                 <span>🛡️ Money Back Guarantee</span>
               </h3>
 
               <div className="space-y-4 sm:space-y-6">
-                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl text-center">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl text-center animate-pulse-glow">
                   <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">
                     70%
                   </div>
@@ -1310,28 +1410,28 @@ ${formData.message || "No goals shared"}
                 </div>
 
                 <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
-                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm sm:text-base">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-800/50 rounded-lg sm:rounded-xl animate-slide-left" style={{ animationDelay: "0.1s" }}>
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 animate-pulse" />
+                    <span className="text-gray-300 text-sm sm:text-base">
                       ✅ Full course access upon payment
                     </span>
                   </div>
-                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
-                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm sm:text-base">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-800/50 rounded-lg sm:rounded-xl animate-slide-left" style={{ animationDelay: "0.2s" }}>
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 animate-pulse" />
+                    <span className="text-gray-300 text-sm sm:text-base">
                       ✅ Risk-free investment with guarantee
                     </span>
                   </div>
-                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-50 rounded-lg sm:rounded-xl">
-                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm sm:text-base">
+                  <div className="flex items-center space-x-3 p-3 sm:p-4 bg-gray-800/50 rounded-lg sm:rounded-xl animate-slide-left" style={{ animationDelay: "0.3s" }}>
+                    <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 animate-pulse" />
+                    <span className="text-gray-300 text-sm sm:text-base">
                       ✅ Immediate enrollment confirmation
                     </span>
                   </div>
                 </div>
 
                 {/* Slot Availability */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl">
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl animate-pulse">
                   <h4 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3">
                     🚨 Real-time Slot Availability
                   </h4>
@@ -1339,13 +1439,13 @@ ${formData.message || "No goals shared"}
                     <span className="text-sm sm:text-base">
                       Slots Available:
                     </span>
-                    <span className="font-bold text-xl sm:text-2xl">
+                    <span className="font-bold text-xl sm:text-2xl animate-count">
                       {registeredSlots} / {availableSlots}
                     </span>
                   </div>
                   <div className="h-2 sm:h-3 bg-white/30 rounded-full overflow-hidden mt-2 sm:mt-3">
                     <div
-                      className="h-full bg-white transition-all duration-1000"
+                      className="h-full bg-white transition-all duration-1000 animate-progress"
                       style={{
                         width: `${enrollmentPercentage}%`,
                       }}
@@ -1368,17 +1468,17 @@ ${formData.message || "No goals shared"}
       {/* Booking Form Section */}
       <div
         ref={bookingSectionRef}
-        className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16"
+        className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16 relative z-10"
       >
-        <div className="text-center mb-8 sm:mb-12 px-2">
-          <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base">
+        <div className="text-center mb-8 sm:mb-12 px-2 animate-slide-up">
+          <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full text-white font-bold mb-4 sm:mb-6 text-xs sm:text-sm lg:text-base animate-pulse">
             <CalendarIcon className="w-4 h-4 sm:w-6 sm:h-6 mr-2" />
             📝 COMPLETE YOUR BOOKING
           </div>
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4">
             Secure Your Forex Trading Journey
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
             Fill in your details below to book your spot ✨
           </p>
         </div>
@@ -1386,32 +1486,31 @@ ${formData.message || "No goals shared"}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Column - Topic Selection & Form */}
           <div className="lg:col-span-2 space-y-4 sm:space-y-6 lg:space-y-8">
-            {/* Topic Selection - FIXED: Centered on small screens */}
-            <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100">
-              {/* FIXED SECTION: Centered header for mobile */}
+            {/* Topic Selection */}
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 animate-slide-up">
               <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
-                <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4">
+                <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4 animate-pulse">
                   <AcademicCapIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
                     1️⃣ Select Topics You Want to Learn
                   </h2>
-                  <p className="text-gray-600 text-sm sm:text-base mt-2">
+                  <p className="text-gray-400 text-sm sm:text-base mt-2">
                     Choose the trading topics that interest you most (Select at
                     least 3) 🎯
                   </p>
                 </div>
               </div>
 
-              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg sm:rounded-xl border border-blue-200">
+              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-blue-500/30 animate-pulse">
                 <div className="flex items-start">
-                  <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
+                  <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mr-2 sm:mr-3 mt-0.5 flex-shrink-0 animate-pulse" />
                   <div>
-                    <p className="font-semibold text-blue-800 mb-1 text-sm sm:text-base">
+                    <p className="font-semibold text-blue-300 mb-1 text-sm sm:text-base">
                       🎯 Personalized Learning Path
                     </p>
-                    <p className="text-blue-700 text-xs sm:text-sm">
+                    <p className="text-blue-200 text-xs sm:text-sm">
                       Your selected topics will help us create a customized
                       learning plan just for you.
                     </p>
@@ -1420,42 +1519,43 @@ ${formData.message || "No goals shared"}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                {courseModules.map((course) => (
+                {courseModules.map((course, index) => (
                   <div
                     key={course.id}
                     onClick={() => handleCourseSelection(course.id)}
-                    className={`p-3 sm:p-4 rounded-lg sm:rounded-xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                    className={`p-3 sm:p-4 rounded-lg sm:rounded-xl border-2 cursor-pointer transition-all duration-300 transform hover:scale-105 animate-slide-up ${
                       selectedCourses.includes(course.id)
-                        ? "border-blue-500 bg-blue-50 shadow-lg"
-                        : "border-gray-200 hover:border-blue-300"
+                        ? "border-blue-500 bg-blue-900/30 shadow-lg"
+                        : "border-gray-700 hover:border-blue-400"
                     }`}
+                    style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <div className="flex items-center justify-between mb-1 sm:mb-2">
                       <div
-                        className={`w-8 h-8 sm:w-10 sm:h-10 ${course.color} rounded-lg flex items-center justify-center`}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 ${course.color} rounded-lg flex items-center justify-center animate-pulse`}
                       >
                         <span className="text-white font-bold text-sm">
                           {course.emoji}
                         </span>
                       </div>
                       {selectedCourses.includes(course.id) && (
-                        <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                        <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 animate-ping" />
                       )}
                     </div>
-                    <h3 className="font-bold text-gray-900 mb-1 text-sm sm:text-base">
+                    <h3 className="font-bold text-white mb-1 text-sm sm:text-base">
                       {course.name}
                     </h3>
-                    <p className="text-gray-600 text-xs sm:text-sm">
+                    <p className="text-gray-400 text-xs sm:text-sm">
                       Master this essential trading concept
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-200">
+              <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-700">
                 <div className="flex flex-col sm:flex-row items-center justify-between">
-                  <div className="text-gray-700 mb-2 sm:mb-0">
-                    <span className="font-bold text-sm sm:text-base">
+                  <div className="text-gray-300 mb-2 sm:mb-0">
+                    <span className="font-bold text-sm sm:text-base animate-count">
                       📚 {selectedCourses.length} topics selected
                     </span>
                     <span className="text-gray-500 text-xs sm:text-sm ml-2">
@@ -1465,9 +1565,9 @@ ${formData.message || "No goals shared"}
                   <div
                     className={`px-3 py-2 rounded-lg text-xs sm:text-sm ${
                       selectedCourses.length >= 3
-                        ? "bg-green-100 text-green-800"
-                        : "bg-yellow-100 text-yellow-800"
-                    }`}
+                        ? "bg-green-900/50 text-green-300"
+                        : "bg-yellow-900/50 text-yellow-300"
+                    } animate-pulse`}
                   >
                     {selectedCourses.length >= 3
                       ? "✅ Ready to proceed"
@@ -1478,30 +1578,29 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Booking Form */}
-            <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100">
-              {/* FIXED: Centered header for mobile */}
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 animate-slide-up-delayed">
               <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
-                <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4">
+                <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4 animate-pulse">
                   <CalendarIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
                     2️⃣ Complete Your Details
                   </h2>
-                  <p className="text-gray-600 text-sm sm:text-base mt-2">
+                  <p className="text-gray-400 text-sm sm:text-base mt-2">
                     Fill in your information to book your spot 📝
                   </p>
                 </div>
               </div>
 
-              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg sm:rounded-xl border border-blue-200">
+              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-blue-500/30 animate-pulse">
                 <div className="flex items-start">
-                  <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 sm:mr-3 mt-0.5 flex-shrink-0" />
+                  <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mr-2 sm:mr-3 mt-0.5 flex-shrink-0 animate-pulse" />
                   <div>
-                    <p className="font-semibold text-blue-800 mb-1 text-sm sm:text-base">
+                    <p className="font-semibold text-blue-300 mb-1 text-sm sm:text-base">
                       ✅ All Details Will Be Sent To You
                     </p>
-                    <p className="text-blue-700 text-xs sm:text-sm">
+                    <p className="text-blue-200 text-xs sm:text-sm">
                       After submission, you'll receive ONE confirmation email
                       with all your booking details.
                     </p>
@@ -1513,7 +1612,7 @@ ${formData.message || "No goals shared"}
               {submitSuccess && (
                 <div className="mb-4 sm:mb-6 p-4 sm:p-6 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg sm:rounded-2xl animate-fadeIn">
                   <div className="flex items-start">
-                    <CheckCircleIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 flex-shrink-0" />
+                    <CheckCircleIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 flex-shrink-0 animate-bounce" />
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold">
                         🎉 Booking Submitted Successfully!
@@ -1529,13 +1628,13 @@ ${formData.message || "No goals shared"}
                           <span className="font-bold text-sm sm:text-base">
                             📊 Slot Status Updated:
                           </span>
-                          <span className="font-bold text-yellow-300 text-sm sm:text-base">
+                          <span className="font-bold text-yellow-300 text-sm sm:text-base animate-count">
                             {registeredSlots} / {availableSlots} filled
                           </span>
                         </div>
                         <div className="h-1.5 sm:h-2 bg-white/30 rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-white transition-all duration-1000"
+                            className="h-full bg-white transition-all duration-1000 animate-progress"
                             style={{
                               width: `${enrollmentPercentage}%`,
                             }}
@@ -1579,7 +1678,7 @@ ${formData.message || "No goals shared"}
               {submitError && (
                 <div className="mb-4 sm:mb-6 p-4 sm:p-6 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-lg sm:rounded-2xl animate-fadeIn">
                   <div className="flex items-start">
-                    <ShieldCheckIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 flex-shrink-0" />
+                    <ShieldCheckIcon className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 flex-shrink-0 animate-pulse" />
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold">
                         ⚠️ Submission Error
@@ -1596,7 +1695,7 @@ ${formData.message || "No goals shared"}
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2">
+                    <label className="block text-sm font-semibold text-white mb-2">
                       👤 Full Name *
                     </label>
                     <input
@@ -1605,12 +1704,15 @@ ${formData.message || "No goals shared"}
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-800/50 text-sm sm:text-base text-white animate-pulse-on-focus"
                       placeholder="John Doe"
                     />
+                    <p className="text-xs text-gray-400 mt-1">
+                      Type your full name here
+                    </p>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2">
+                    <label className="block text-sm font-semibold text-white mb-2">
                       📧 Email Address *
                     </label>
                     <input
@@ -1619,15 +1721,18 @@ ${formData.message || "No goals shared"}
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-800/50 text-sm sm:text-base text-white animate-pulse-on-focus"
                       placeholder="john@example.com"
                     />
+                    <p className="text-xs text-gray-400 mt-1">
+                      Type your email address here
+                    </p>
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2">
+                    <label className="block text-sm font-semibold text-white mb-2">
                       📞 Phone Number *
                     </label>
                     <input
@@ -1636,12 +1741,15 @@ ${formData.message || "No goals shared"}
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-800/50 text-sm sm:text-base text-white animate-pulse-on-focus"
                       placeholder="+254 700 000 000"
                     />
+                    <p className="text-xs text-gray-400 mt-1">
+                      Type your phone number here
+                    </p>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2">
+                    <label className="block text-sm font-semibold text-white mb-2">
                       📅 Preferred Date *
                     </label>
                     <input
@@ -1652,14 +1760,17 @@ ${formData.message || "No goals shared"}
                       required
                       min={getMinDate()}
                       max={getMaxDate()}
-                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-800/50 text-sm sm:text-base text-white animate-pulse-on-focus"
                     />
+                    <p className="text-xs text-gray-400 mt-1">
+                      Select your preferred date
+                    </p>
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label className="block text-sm font-semibold text-gray-800 mb-2">
+                    <label className="block text-sm font-semibold text-white mb-2">
                       ⏰ Preferred Time Slot *
                     </label>
                     <select
@@ -1667,7 +1778,7 @@ ${formData.message || "No goals shared"}
                       value={formData.preferredTime}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
+                      className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-800/50 text-sm sm:text-base text-white animate-pulse-on-focus"
                     >
                       <option value="">Select time slot</option>
                       {timeSlots.map((slot) => (
@@ -1676,13 +1787,16 @@ ${formData.message || "No goals shared"}
                         </option>
                       ))}
                     </select>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Select your preferred time
+                    </p>
                   </div>
                   <div className="flex items-end">
                     <div className="w-full">
-                      <label className="block text-sm font-semibold text-gray-800 mb-2">
+                      <label className="block text-sm font-semibold text-white mb-2">
                         📚 Selected Topics ({selectedCourses.length})
                       </label>
-                      <div className="px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl bg-gray-50 min-h-[60px]">
+                      <div className="px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl bg-gray-800/30 min-h-[60px]">
                         {selectedCourses.length > 0 ? (
                           <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {selectedCourses.map((courseId) => {
@@ -1690,7 +1804,7 @@ ${formData.message || "No goals shared"}
                               return course ? (
                                 <span
                                   key={courseId}
-                                  className="inline-flex items-center px-2 py-1 rounded-full text-xs sm:text-sm bg-blue-100 text-blue-800"
+                                  className="inline-flex items-center px-2 py-1 rounded-full text-xs sm:text-sm bg-blue-900/50 text-blue-300 animate-pulse"
                                 >
                                   {course.emoji} {course.name}
                                 </span>
@@ -1703,12 +1817,15 @@ ${formData.message || "No goals shared"}
                           </span>
                         )}
                       </div>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Your selected topics appear here
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-800 mb-2">
+                  <label className="block text-sm font-semibold text-white mb-2">
                     🎯 Trading Goals & Experience (Optional)
                   </label>
                   <textarea
@@ -1716,9 +1833,12 @@ ${formData.message || "No goals shared"}
                     value={formData.message}
                     onChange={handleInputChange}
                     rows="4"
-                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-sm sm:text-base"
+                    className="w-full px-3 py-2.5 sm:px-4 sm:py-3 border-2 border-gray-700 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-800/50 text-sm sm:text-base text-white animate-pulse-on-focus"
                     placeholder="Tell us about your trading experience and what you hope to achieve..."
                   ></textarea>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Type your trading goals here
+                  </p>
                 </div>
 
                 <div className="space-y-3">
@@ -1735,7 +1855,7 @@ ${formData.message || "No goals shared"}
                       !formData.preferredTime ||
                       registeredSlots >= availableSlots
                     }
-                    className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 ${
+                    className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-sm sm:text-lg transition-all duration-300 animate-pulse-glow ${
                       selectedPlan &&
                       selectedCourses.length >= 3 &&
                       !isSubmitting &&
@@ -1746,7 +1866,7 @@ ${formData.message || "No goals shared"}
                       formData.preferredTime &&
                       registeredSlots < availableSlots
                         ? "bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
-                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-gray-700 text-gray-400 cursor-not-allowed"
                     }`}
                   >
                     {isSubmitting ? (
@@ -1774,11 +1894,11 @@ ${formData.message || "No goals shared"}
                   </button>
 
                   <div className="text-center">
-                    <p className="text-xs sm:text-sm text-gray-600 mt-2">
+                    <p className="text-xs sm:text-sm text-gray-400 mt-2">
                       After submission, you'll receive ONE confirmation email
                       with all details. 📧
                     </p>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                    <p className="text-xs sm:text-sm text-gray-400 mt-1 animate-count">
                       📊 Current slots: {registeredSlots}/{availableSlots}{" "}
                       filled • 🎟️ {availableSlots - registeredSlots} remaining
                     </p>
@@ -1786,7 +1906,7 @@ ${formData.message || "No goals shared"}
 
                   <Link
                     to="/"
-                    className="block w-full py-3 bg-gradient-to-r from-gray-500 to-gray-700 text-white rounded-lg sm:rounded-xl font-bold text-center hover:shadow-lg transition-all hover:scale-105 text-sm sm:text-base"
+                    className="block w-full py-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-lg sm:rounded-xl font-bold text-center hover:shadow-lg transition-all hover:scale-105 text-sm sm:text-base animate-pulse"
                   >
                     ← Back to Homepage
                   </Link>
@@ -1798,9 +1918,9 @@ ${formData.message || "No goals shared"}
           {/* Right Column - Order Summary */}
           <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             {/* Order Summary */}
-            <div className="bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-100 sticky top-4 sm:top-8">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
-                <ChartBarIconSolid className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-blue-600" />
+            <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 border border-gray-700 sticky top-4 sm:top-8 animate-slide-up">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
+                <ChartBarIconSolid className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-blue-500 animate-pulse" />
                 <span>📋 Booking Summary</span>
               </h3>
 
@@ -1808,16 +1928,16 @@ ${formData.message || "No goals shared"}
                 <>
                   <div className="space-y-4 sm:space-y-6">
                     {/* Selected Plan */}
-                    <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                    <div className="pb-3 sm:pb-4 border-b border-gray-700 animate-slide-up">
                       <div className="flex justify-between items-center mb-1 sm:mb-2">
-                        <div className="font-semibold text-gray-900 text-sm sm:text-base">
+                        <div className="font-semibold text-white text-sm sm:text-base">
                           📋 {getSelectedPlanData()?.name}
                         </div>
-                        <div className="text-base sm:text-lg font-bold text-blue-600">
+                        <div className="text-base sm:text-lg font-bold text-blue-400 animate-count">
                           💰 Ksh {formatPrice(getSelectedPlanData()?.price)}
                         </div>
                       </div>
-                      <div className="text-xs sm:text-sm text-gray-600 flex items-center">
+                      <div className="text-xs sm:text-sm text-gray-400 flex items-center">
                         <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                         ⏳ {getSelectedPlanData()?.duration}
                       </div>
@@ -1825,9 +1945,9 @@ ${formData.message || "No goals shared"}
 
                     {/* Selected Topics */}
                     {selectedCourses.length > 0 && (
-                      <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                      <div className="pb-3 sm:pb-4 border-b border-gray-700 animate-slide-up">
                         <div className="mb-1 sm:mb-2">
-                          <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                          <div className="font-semibold text-white mb-2 text-sm sm:text-base">
                             📚 Selected Topics ({selectedCourses.length})
                           </div>
                           <div className="space-y-1 max-h-32 overflow-y-auto pr-2">
@@ -1836,12 +1956,12 @@ ${formData.message || "No goals shared"}
                               return course ? (
                                 <div
                                   key={courseId}
-                                  className="flex items-center text-xs sm:text-sm"
+                                  className="flex items-center text-xs sm:text-sm animate-slide-left"
                                 >
                                   <div
-                                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mr-2 ${course.color}`}
+                                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full mr-2 ${course.color} animate-pulse`}
                                   ></div>
-                                  <span className="text-gray-700">
+                                  <span className="text-gray-300">
                                     {course.emoji} {course.name}
                                   </span>
                                 </div>
@@ -1854,15 +1974,15 @@ ${formData.message || "No goals shared"}
 
                     {/* Selected Date & Time */}
                     {(formData.preferredDate || formData.preferredTime) && (
-                      <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                      <div className="pb-3 sm:pb-4 border-b border-gray-700 animate-slide-up">
                         <div className="mb-1 sm:mb-2">
-                          <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                          <div className="font-semibold text-white mb-2 text-sm sm:text-base">
                             📅 Selected Date & Time
                           </div>
-                          <div className="text-xs sm:text-sm text-gray-700 space-y-1">
+                          <div className="text-xs sm:text-sm text-gray-300 space-y-1">
                             {formData.preferredDate && (
                               <div className="flex items-center">
-                                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mr-1 sm:mr-2 flex-shrink-0" />
+                                <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mr-1 sm:mr-2 flex-shrink-0 animate-pulse" />
                                 <span>
                                   📅{" "}
                                   {formatDateForEmail(formData.preferredDate)}
@@ -1871,7 +1991,7 @@ ${formData.message || "No goals shared"}
                             )}
                             {formData.preferredTime && (
                               <div className="flex items-center">
-                                <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mr-1 sm:mr-2 flex-shrink-0" />
+                                <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500 mr-1 sm:mr-2 flex-shrink-0 animate-pulse" />
                                 <span>⏰ {formData.preferredTime}</span>
                               </div>
                             )}
@@ -1882,12 +2002,12 @@ ${formData.message || "No goals shared"}
 
                     {/* Trading Goals Preview */}
                     {formData.message && (
-                      <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                      <div className="pb-3 sm:pb-4 border-b border-gray-700 animate-slide-up">
                         <div className="mb-1 sm:mb-2">
-                          <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                          <div className="font-semibold text-white mb-2 text-sm sm:text-base">
                             🎯 Trading Goals
                           </div>
-                          <div className="text-xs sm:text-sm text-gray-700 p-2 bg-gray-50 rounded-lg max-h-24 overflow-y-auto">
+                          <div className="text-xs sm:text-sm text-gray-300 p-2 bg-gray-800/30 rounded-lg max-h-24 overflow-y-auto">
                             {formData.message.length > 100
                               ? `${formData.message.substring(0, 100)}...`
                               : formData.message}
@@ -1897,27 +2017,27 @@ ${formData.message || "No goals shared"}
                     )}
 
                     {/* Slot Status */}
-                    <div className="pb-3 sm:pb-4 border-b border-gray-200">
+                    <div className="pb-3 sm:pb-4 border-b border-gray-700 animate-slide-up">
                       <div className="mb-1 sm:mb-2">
-                        <div className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                        <div className="font-semibold text-white mb-2 text-sm sm:text-base">
                           📊 Slot Availability
                         </div>
-                        <div className="text-xs sm:text-sm text-gray-700 space-y-1.5 sm:space-y-2">
+                        <div className="text-xs sm:text-sm text-gray-300 space-y-1.5 sm:space-y-2">
                           <div className="flex justify-between items-center">
                             <span>Slots Filled:</span>
-                            <span className="font-bold">
+                            <span className="font-bold animate-count">
                               {registeredSlots}/{availableSlots}
                             </span>
                           </div>
-                          <div className="h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-1.5 sm:h-2 bg-gray-700 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000"
+                              className="h-full bg-gradient-to-r from-green-500 to-emerald-500 transition-all duration-1000 animate-progress"
                               style={{
                                 width: `${enrollmentPercentage}%`,
                               }}
                             ></div>
                           </div>
-                          <div className="text-center text-xs sm:text-sm text-gray-600">
+                          <div className="text-center text-xs sm:text-sm text-gray-400">
                             🎟️ {availableSlots - registeredSlots} spots
                             remaining
                           </div>
@@ -1927,15 +2047,15 @@ ${formData.message || "No goals shared"}
 
                     {/* Client Information Preview */}
                     {formData.name && (
-                      <div className="pt-3 sm:pt-4">
+                      <div className="pt-3 sm:pt-4 animate-slide-up">
                         <div className="mb-3 sm:mb-4">
                           <div className="text-xs sm:text-sm text-gray-500 mb-1">
                             👤 Your Information:
                           </div>
-                          <div className="text-xs sm:text-sm text-gray-700 space-y-1">
+                          <div className="text-xs sm:text-sm text-gray-300 space-y-1">
                             {formData.name && (
                               <div className="flex items-center">
-                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0" />
+                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0 animate-pulse" />
                                 <span className="truncate">
                                   {formData.name}
                                 </span>
@@ -1943,13 +2063,13 @@ ${formData.message || "No goals shared"}
                             )}
                             {formData.phone && (
                               <div className="flex items-center">
-                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0" />
+                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0 animate-pulse" />
                                 <span>📞 {formData.phone}</span>
                               </div>
                             )}
                             {formData.email && (
                               <div className="flex items-center">
-                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0" />
+                                <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4 text-green-500 mr-1 sm:mr-2 flex-shrink-0 animate-pulse" />
                                 <span className="truncate">
                                   📧 {formData.email}
                                 </span>
@@ -1958,10 +2078,10 @@ ${formData.message || "No goals shared"}
                           </div>
                         </div>
 
-                        <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg border border-blue-200">
+                        <div className="p-2 sm:p-3 bg-gradient-to-r from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-lg border border-blue-500/30 animate-pulse">
                           <div className="flex items-center">
-                            <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-1 sm:mr-2" />
-                            <span className="text-xs sm:text-sm font-semibold text-blue-800">
+                            <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mr-1 sm:mr-2" />
+                            <span className="text-xs sm:text-sm font-semibold text-blue-300">
                               📱 Direct Contact: 0715657800
                             </span>
                           </div>
@@ -1971,14 +2091,14 @@ ${formData.message || "No goals shared"}
                   </div>
 
                   {/* Email Confirmation */}
-                  <div className="mt-4 sm:mt-6 p-2 sm:p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg sm:rounded-xl border border-blue-200">
+                  <div className="mt-4 sm:mt-6 p-2 sm:p-3 bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm rounded-lg sm:rounded-xl border border-blue-500/30 animate-pulse">
                     <div className="flex items-center">
-                      <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-1 sm:mr-2" />
+                      <CheckCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mr-1 sm:mr-2" />
                       <div>
-                        <p className="text-xs sm:text-sm font-semibold text-blue-800">
+                        <p className="text-xs sm:text-sm font-semibold text-blue-300">
                           📧 Email Confirmation
                         </p>
-                        <p className="text-xs text-blue-600">
+                        <p className="text-xs text-blue-400">
                           All details will be emailed to you in ONE email
                         </p>
                       </div>
@@ -1986,7 +2106,7 @@ ${formData.message || "No goals shared"}
                   </div>
 
                   {/* Contact Info */}
-                  <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg sm:rounded-xl text-white">
+                  <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg sm:rounded-xl text-white animate-pulse-glow">
                     <h4 className="font-bold mb-2 sm:mb-3 text-sm sm:text-base">
                       📞 Contact Details
                     </h4>
@@ -1995,7 +2115,7 @@ ${formData.message || "No goals shared"}
                         <span className="text-green-100 text-xs sm:text-sm">
                           Phone:
                         </span>
-                        <span className="font-bold text-xs sm:text-sm">
+                        <span className="font-bold text-xs sm:text-sm animate-pulse">
                           📱 0715657800
                         </span>
                       </div>
@@ -2003,7 +2123,7 @@ ${formData.message || "No goals shared"}
                         <span className="text-green-100 text-xs sm:text-sm">
                           WhatsApp:
                         </span>
-                        <span className="font-bold text-xs sm:text-sm">
+                        <span className="font-bold text-xs sm:text-sm animate-pulse">
                           💬 0715657800
                         </span>
                       </div>
@@ -2011,7 +2131,7 @@ ${formData.message || "No goals shared"}
                         <span className="text-green-100 text-xs sm:text-sm">
                           Email Response:
                         </span>
-                        <span className="font-bold text-xs sm:text-sm">
+                        <span className="font-bold text-xs sm:text-sm animate-pulse">
                           ⚡ Instant
                         </span>
                       </div>
@@ -2019,7 +2139,7 @@ ${formData.message || "No goals shared"}
                         <span className="text-green-100 text-xs sm:text-sm">
                           Call Response:
                         </span>
-                        <span className="font-bold text-xs sm:text-sm">
+                        <span className="font-bold text-xs sm:text-sm animate-pulse">
                           ⏰ 24 Hours
                         </span>
                       </div>
@@ -2039,9 +2159,9 @@ ${formData.message || "No goals shared"}
             </div>
 
             {/* Quick Contact Guide */}
-            <div className="bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 text-white">
+            <div className="bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 lg:p-8 text-white animate-pulse-glow">
               <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
-                <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-pulse" />
                 <span>📱 Quick Contact</span>
               </h3>
               <div className="space-y-3 sm:space-y-4">
@@ -2049,7 +2169,7 @@ ${formData.message || "No goals shared"}
                   <div className="font-bold mb-1 text-sm sm:text-base">
                     Contact Number:
                   </div>
-                  <div className="text-2xl sm:text-3xl font-bold tracking-wider">
+                  <div className="text-2xl sm:text-3xl font-bold tracking-wider animate-pulse">
                     📱 0715657800
                   </div>
                 </div>
@@ -2057,7 +2177,7 @@ ${formData.message || "No goals shared"}
                   <div className="font-bold mb-1 text-sm sm:text-base">
                     Available:
                   </div>
-                  <div className="text-base sm:text-lg">
+                  <div className="text-base sm:text-lg animate-pulse">
                     📅 Mon-Sun, 8AM-10PM
                   </div>
                 </div>
@@ -2065,7 +2185,7 @@ ${formData.message || "No goals shared"}
                   <div className="font-bold mb-1 text-sm sm:text-base">
                     Email Response:
                   </div>
-                  <div className="text-xl sm:text-2xl font-bold">
+                  <div className="text-xl sm:text-2xl font-bold animate-pulse">
                     ⚡ Instant
                   </div>
                 </div>
@@ -2082,9 +2202,9 @@ ${formData.message || "No goals shared"}
 
         {/* Footer Note */}
         <div className="mt-8 sm:mt-12 text-center px-2">
-          <div className="inline-flex items-center space-x-2 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg sm:rounded-2xl">
-            <ShieldCheckIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
-            <p className="text-gray-600 text-xs sm:text-sm">
+          <div className="inline-flex items-center space-x-2 p-3 sm:p-4 bg-gradient-to-r from-blue-900/50 to-purple-900/50 backdrop-blur-sm rounded-lg sm:rounded-2xl animate-pulse">
+            <ShieldCheckIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+            <p className="text-gray-300 text-xs sm:text-sm">
               <strong>🔒 Secure Booking:</strong> All information is encrypted
               and sent directly to Samuel Erastus Ngamau
             </p>
@@ -2093,21 +2213,22 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Stats Section */}
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-12 sm:py-16 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-white to-gray-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 transform hover:-translate-y-1 transition-transform"
+              className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-700 transform hover:-translate-y-1 transition-transform animate-slide-up"
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4 mx-auto">
+              <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg sm:rounded-xl mb-3 sm:mb-4 mx-auto animate-bounce">
                 <span className="text-xl sm:text-2xl">{stat.emoji}</span>
               </div>
               <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1 animate-count">
                   {stat.value}
                 </div>
-                <div className="text-gray-600 text-xs sm:text-sm">
+                <div className="text-gray-400 text-xs sm:text-sm">
                   {stat.label}
                 </div>
               </div>
@@ -2117,12 +2238,12 @@ ${formData.message || "No goals shared"}
       </div>
 
       {/* Final CTA */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 py-12 sm:py-16 lg:py-20">
+      <div className="bg-gradient-to-r from-blue-900/80 via-indigo-800/80 to-purple-900/80 backdrop-blur-sm py-12 sm:py-16 lg:py-20 relative z-10">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 animate-slide-up">
             🚀 Ready to Master Forex Trading?
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-blue-200 mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in">
             Join our exclusive bootcamp with only{" "}
             {availableSlots - registeredSlots} slots remaining. Registration
             ends in {timeLeft.days} days! ⏳
@@ -2131,7 +2252,7 @@ ${formData.message || "No goals shared"}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <button
               onClick={scrollToBookingSection}
-              className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 text-sm sm:text-lg font-bold text-blue-600 bg-white rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl w-full sm:w-auto"
+              className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-4 text-sm sm:text-lg font-bold text-blue-600 bg-white rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl w-full sm:w-auto animate-pulse-glow"
             >
               <span className="text-sm sm:text-base">
                 🎯 Book Your Spot Now
@@ -2142,12 +2263,12 @@ ${formData.message || "No goals shared"}
             <div className="text-white text-center">
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-2">
                 <div className="flex items-center space-x-2">
-                  <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <ClockIcon className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
                   <span className="font-bold text-sm sm:text-base">
                     ⏳ Registration Ends In:
                   </span>
                 </div>
-                <span className="font-mono bg-black/30 px-2 py-1 sm:px-3 sm:py-1 rounded-lg text-sm">
+                <span className="font-mono bg-black/30 px-2 py-1 sm:px-3 sm:py-1 rounded-lg text-sm animate-count">
                   {formatTimeUnit(timeLeft.days)}:
                   {formatTimeUnit(timeLeft.hours)}:
                   {formatTimeUnit(timeLeft.minutes)}
@@ -2186,12 +2307,287 @@ ${formData.message || "No goals shared"}
           }
         }
 
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes bounceIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.3);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+          70% {
+            transform: scale(0.9);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+
+        @keyframes float-particle {
+          0%, 100% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+          25% {
+            transform: translate(10px, 10px) rotate(90deg);
+          }
+          50% {
+            transform: translate(0, 20px) rotate(180deg);
+          }
+          75% {
+            transform: translate(-10px, 10px) rotate(270deg);
+          }
+        }
+
+        @keyframes float-slow {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+        }
+
+        @keyframes float-medium {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-25px);
+          }
+        }
+
+        @keyframes float-fast {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-35px);
+          }
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+          }
+          50% {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+          }
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.7;
+          }
+        }
+
+        @keyframes glow {
+          0%, 100% {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+          }
+          50% {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+          }
+        }
+
+        @keyframes chart-line {
+          0% {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+          }
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes chart-line-delayed {
+          0% {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+          }
+          50% {
+            stroke-dashoffset: 1000;
+          }
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes grid-move {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 50px 50px;
+          }
+        }
+
+        @keyframes marquee {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        @keyframes progress {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: var(--progress-width);
+          }
+        }
+
+        @keyframes count {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
         .highlight-section > div {
           animation: highlight 1.5s ease-in-out;
         }
 
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .animate-slide-up {
+          animation: slideUp 0.6s ease-out;
+        }
+
+        .animate-slide-up-delayed {
+          animation: slideUp 0.6s ease-out 0.3s both;
+        }
+
+        .animate-slide-left {
+          animation: slideLeft 0.5s ease-out;
+        }
+
+        .animate-slide-right {
+          animation: slideRight 0.5s ease-out;
+        }
+
+        .animate-bounce-in {
+          animation: bounceIn 0.8s ease-out;
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+          animation: float-slow 8s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+          animation: float-medium 6s ease-in-out infinite;
+        }
+
+        .animate-float-fast {
+          animation: float-fast 4s ease-in-out infinite;
+        }
+
+        .animate-float-particle {
+          animation: float-particle 10s ease-in-out infinite;
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        .animate-glow {
+          animation: glow 2s ease-in-out infinite;
+        }
+
+        .animate-chart-line {
+          animation: chart-line 3s ease-out infinite;
+        }
+
+        .animate-chart-line-delayed {
+          animation: chart-line-delayed 3s ease-out 1.5s infinite;
+        }
+
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+
+        .animate-progress {
+          animation: progress 1s ease-out;
+          --progress-width: ${enrollmentPercentage}%;
+        }
+
+        .animate-count {
+          animation: count 0.3s ease-out;
+        }
+
+        .animate-pulse-on-focus:focus {
+          animation: pulse-glow 0.5s ease-out;
+        }
+
+        .animate-slide-up:nth-child(odd) {
+          animation-delay: 0.2s;
+        }
+
+        .animate-slide-up:nth-child(even) {
+          animation-delay: 0.4s;
         }
       `}</style>
     </div>
