@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/erastuslogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2E86C1" />
+    <meta
+      name="description"
+      content="ErastusFX - Master Professional Forex Trading Through Consistency. Comprehensive 13-module bootcamp with expert mentorship."
+    />
+    <meta name="keywords" content="forex trading, trading education, forex bootcamp, trading mentorship, currency trading, technical analysis, risk management, trading psychology" />
+    <meta name="author" content="Samuel Erastus Ngamau - ErastusFX" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ErastusFX - Forex Trading Mastery Bootcamp" />
+    <meta property="og:description" content="Transform from beginner to confident trader with our comprehensive 13-module bootcamp. Limited to only 10 students for personalized attention!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/erastuslogo.png" />
+    <meta property="og:url" content="https://erastusfx.com" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ErastusFX - Forex Trading Mastery Bootcamp" />
+    <meta name="twitter:description" content="Master Professional Forex Trading Through Consistency. Limited slots available!" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/erastuslogo.png" />
+    <meta name="twitter:creator" content="@erastusfx" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/erastuslogo.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to improve performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="%PUBLIC_URL%/erastuslogo.png" as="image">
+    
+    <style>
+      /* Loading screen styles */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        color: white;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .logo-container {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .circular-logo {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        background: white;
+        padding: 8px;
+        box-shadow: 
+          0 10px 40px rgba(0, 0, 0, 0.4),
+          0 0 0 5px rgba(46, 134, 193, 0.3),
+          0 0 0 10px rgba(46, 134, 193, 0.1);
+        animation: pulse 2s infinite ease-in-out;
+        border: 4px solid rgba(255, 255, 255, 0.8);
+      }
+      
+      .circular-logo::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 50%;
+        background: conic-gradient(from 0deg, #2E86C1, #1B4F72, #2E86C1);
+        animation: rotate 3s linear infinite;
+        z-index: -1;
+        opacity: 0.5;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-top: 4px solid #FFD700;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 1.5rem;
+      }
+      
+      .loading-text {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        letter-spacing: 1px;
+        background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% auto;
+        animation: gradient 3s ease infinite;
+      }
+      
+      .loading-subtext {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        text-align: center;
+        max-width: 500px;
+        line-height: 1.6;
+        font-weight: 400;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        padding: 0 20px;
+      }
+      
+      .trading-highlight {
+        display: inline-block;
+        background: linear-gradient(45deg, #FFD700, #FF8C00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 600;
+        position: relative;
+      }
+      
+      .trading-highlight::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(45deg, #FFD700, #FF8C00);
+        animation: underline 2s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @keyframes pulse {
+        0% { 
+          transform: scale(1);
+          box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 5px rgba(46, 134, 193, 0.3),
+            0 0 0 10px rgba(46, 134, 193, 0.1);
+        }
+        50% { 
+          transform: scale(1.05);
+          box-shadow: 
+            0 15px 50px rgba(0, 0, 0, 0.6),
+            0 0 0 8px rgba(46, 134, 193, 0.5),
+            0 0 0 15px rgba(46, 134, 193, 0.2);
+        }
+        100% { 
+          transform: scale(1);
+          box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.4),
+            0 0 0 5px rgba(46, 134, 193, 0.3),
+            0 0 0 10px rgba(46, 134, 193, 0.1);
+        }
+      }
+      
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      @keyframes underline {
+        0%, 100% { transform: scaleX(0.8); opacity: 0.7; }
+        50% { transform: scaleX(1); opacity: 1; }
+      }
+      
+      /* Hide loading screen when app loads */
+      .loaded #loading-screen {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-out;
+      }
+      
+      /* Basic body styles */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #0f172a;
+        color: #ffffff;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #1e293b;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(45deg, #2E86C1, #1B4F72);
+        border-radius: 5px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(45deg, #3498db, #21618c);
+      }
+      
+      /* Responsive design for mobile */
+      @media (max-width: 768px) {
+        .logo-container {
+          width: 150px;
+          height: 150px;
+        }
+        
+        .loading-text {
+          font-size: 1.6rem;
+        }
+        
+        .loading-subtext {
+          font-size: 1rem;
+          max-width: 350px;
+        }
+        
+        .circular-logo {
+          padding: 6px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .logo-container {
+          width: 120px;
+          height: 120px;
+        }
+        
+        .loading-text {
+          font-size: 1.3rem;
+        }
+        
+        .loading-subtext {
+          font-size: 0.9rem;
+          max-width: 280px;
+        }
+        
+        .circular-logo {
+          padding: 4px;
+        }
+      }
+    </style>
+    
+    <title>ErastusFX - Master Forex Trading Through Consistency 🚀</title>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="logo-container">
+        <img src="%PUBLIC_URL%/erastuslogo.png" alt="ErastusFX Logo" class="circular-logo" />
+      </div>
+      <div class="loading-spinner"></div>
+      <div class="loading-text">ERASTUS FX</div>
+      <div class="loading-subtext">
+        Mastering Professional Forex Trading through <span class="trading-highlight">Consistency</span>.
+        <br/>
+        Loading comprehensive <span class="trading-highlight">13-module bootcamp</span> with expert mentorship...
+      </div>
+    </div>
+    
+    <noscript>
+      <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; font-family: 'Inter', Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div style="width: 150px; height: 150px; margin-bottom: 2rem;">
+          <img src="%PUBLIC_URL%/erastuslogo.png" alt="ErastusFX Logo" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: white; padding: 8px; border: 4px solid rgba(255,255,255,0.8); box-shadow: 0 10px 30px rgba(0,0,0,0.4);" />
+        </div>
+        <h1 style="margin-bottom: 1.5rem; font-size: 2rem; font-weight: bold; background: linear-gradient(45deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">ERASTUS FX</h1>
+        <div style="max-width: 600px; margin: 0 auto; line-height: 1.6; background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+          <p style="margin-bottom: 1rem; font-size: 1.2rem;">
+            <strong style="color: #FFD700;">JavaScript is required to run this application.</strong>
+          </p>
+          <p style="margin-bottom: 1rem;">
+            <strong>Welcome to ErastusFX - Your Gateway to Professional Forex Trading Mastery!</strong>
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Transform from beginner to confident trader with our comprehensive 13-module bootcamp. 
+            Limited to only 10 students for personalized attention!
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Our comprehensive curriculum includes:
+          </p>
+          <ul style="text-align: left; display: inline-block; margin: 0; padding-left: 1.5rem;">
+            <li>📊 Candle Science & Price Action Analysis</li>
+            <li>🎯 Order Block Navigation Strategies</li>
+            <li>💎 Fair Value Gap Trading</li>
+            <li>💧 Liquidity and Market Dynamics</li>
+            <li>⚡ Break of Structure Patterns</li>
+            <li>🏗️ Market Structure Analysis</li>
+            <li>🎯 714 Method Strategy</li>
+            <li>🎲 ORBS Trading Strategy</li>
+            <li>📈 Support and Resistance Mastery</li>
+            <li>🛡️ Professional Risk Management</li>
+            <li>🧠 Trading Psychology & Mindset</li>
+            <li>🎭 False Breakout Analysis</li>
+            <li>🎖️ Price Action Mastery</li>
+          </ul>
+          <p style="margin-top: 1.5rem; margin-bottom: 1rem;">
+            <strong>💰 Money Back Guarantee:</strong> 70% refund if not satisfied after the 3rd session!
+          </p>
+          <p style="margin-bottom: 1rem;">
+            <strong>📞 Contact:</strong> 0715657800 | <strong>📧 Email:</strong> erastusngamau90@gmail.com
+          </p>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.9; max-width: 500px;">
+          Please enable JavaScript to access our complete trading bootcamp platform, 
+          view real-time slot availability, and submit your booking for personalized mentorship.
+        </p>
+        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+          <div style="background: rgba(46, 134, 193, 0.3); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(46, 134, 193, 0.5);">
+            <span style="color: #FFD700;">🚀</span> Limited to 10 Students
+          </div>
+          <div style="background: rgba(46, 134, 193, 0.3); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(46, 134, 193, 0.5);">
+            <span style="color: #FFD700;">🎯</span> 13 Comprehensive Modules
+          </div>
+          <div style="background: rgba(46, 134, 193, 0.3); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid rgba(46, 134, 193, 0.5);">
+            <span style="color: #FFD700;">💰</span> 70% Money Back Guarantee
+          </div>
+        </div>
+      </div>
+    </noscript>
+    
+    <div id="root"></div>
+    
+    <script>
+      // Enhanced loading screen management
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const root = document.getElementById('root');
+        
+        // Preload the logo image to ensure smooth loading
+        const logoImg = new Image();
+        logoImg.src = '%PUBLIC_URL%/erastuslogo.png';
+        logoImg.onload = function() {
+          console.log('ErastusFX logo loaded successfully');
+          
+          // Create circular favicon from loaded image
+          createCircularFavicon(logoImg);
+        };
+        logoImg.onerror = function() {
+          console.log('Logo loading failed, using fallback styling');
+          const circularLogo = document.querySelector('.circular-logo');
+          if (circularLogo) {
+            // Create fallback FX logo
+            circularLogo.style.background = 'linear-gradient(45deg, #1e3c72, #2a5298)';
+            circularLogo.style.display = 'flex';
+            circularLogo.style.justifyContent = 'center';
+            circularLogo.style.alignItems = 'center';
+            circularLogo.style.color = '#FFD700';
+            circularLogo.style.fontWeight = 'bold';
+            circularLogo.style.fontSize = '24px';
+            circularLogo.style.fontFamily = "'Poppins', sans-serif";
+            circularLogo.innerHTML = 'FX';
+            circularLogo.style.textShadow = '0 2px 10px rgba(0,0,0,0.5)';
+          }
+        };
+        
+        // Function to create circular favicon
+        function createCircularFavicon(imageElement) {
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = 64;
+          canvas.height = 64;
+          
+          // Create circular clipping path
+          ctx.beginPath();
+          ctx.arc(32, 32, 30, 0, 2 * Math.PI);
+          ctx.clip();
+          
+          // Draw the logo
+          ctx.drawImage(imageElement, 2, 2, 60, 60);
+          
+          // Add gold border
+          ctx.beginPath();
+          ctx.arc(32, 32, 30, 0, 2 * Math.PI);
+          ctx.strokeStyle = '#FFD700';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+          
+          // Create favicon
+          const favicon = document.querySelector('link[rel="icon"]');
+          if (favicon) {
+            favicon.href = canvas.toDataURL('image/png');
+          }
+          
+          // Update Apple touch icon
+          const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+          if (appleIcon) {
+            const appleCanvas = document.createElement('canvas');
+            const appleCtx = appleCanvas.getContext('2d');
+            appleCanvas.width = 180;
+            appleCanvas.height = 180;
+            
+            appleCtx.beginPath();
+            appleCtx.arc(90, 90, 85, 0, 2 * Math.PI);
+            appleCtx.clip();
+            appleCtx.drawImage(imageElement, 5, 5, 170, 170);
+            
+            appleCtx.beginPath();
+            appleCtx.arc(90, 90, 85, 0, 2 * Math.PI);
+            appleCtx.strokeStyle = '#FFD700';
+            appleCtx.lineWidth = 8;
+            appleCtx.stroke();
+            
+            appleIcon.href = appleCanvas.toDataURL('image/png');
+          }
+          
+          console.log('Circular favicon created successfully');
+        }
+        
+        // Hide loading screen when React app mounts
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && root.children.length > 0) {
+              setTimeout(function() {
+                document.body.classList.add('loaded');
+                setTimeout(function() {
+                  if (loadingScreen && loadingScreen.parentNode) {
+                    loadingScreen.parentNode.removeChild(loadingScreen);
+                  }
+                }, 500);
+              }, 1500);
+              observer.disconnect();
+            }
+          });
+        });
+        
+        observer.observe(root, { childList: true, subtree: false });
+        
+        // Fallback: hide loading screen after 5 seconds
+        setTimeout(function() {
+          document.body.classList.add('loaded');
+          setTimeout(function() {
+            if (loadingScreen && loadingScreen.parentNode) {
+              loadingScreen.parentNode.removeChild(loadingScreen);
+            }
+          }, 500);
+        }, 5000);
+        
+        // Service Worker Registration for PWA capabilities
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('%PUBLIC_URL%/sw.js')
+              .then(function(registration) {
+                console.log('Service Worker registered: ', registration);
+              })
+              .catch(function(registrationError) {
+                console.log('Service Worker registration failed: ', registrationError);
+              });
+          });
+        }
+        
+        // Update page title with dynamic trading emoji
+        let emojiIndex = 0;
+        const tradingEmojis = ['🚀', '💰', '📈', '🎯', '⚡', '🌟', '💎', '🔥'];
+        
+        function updateTitleEmoji() {
+          const title = document.title;
+          const baseTitle = title.replace(/[🚀💰📈🎯⚡🌟💎🔥]/g, '').trim();
+          document.title = `${baseTitle} ${tradingEmojis[emojiIndex]}`;
+          emojiIndex = (emojiIndex + 1) % tradingEmojis.length;
+        }
+        
+        // Update title every 3 seconds
+        setInterval(updateTitleEmoji, 3000);
+        
+        // Initialize with first emoji
+        setTimeout(updateTitleEmoji, 1000);
+      });
+      
+      // Enhanced error handling
+      window.addEventListener('error', function(e) {
+        console.error('Application error:', e.error);
+      });
+      
+      // Performance monitoring
+      window.addEventListener('load', function() {
+        if ('performance' in window) {
+          const perfData = window.performance.timing;
+          const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+          console.log('Page load time:', loadTime + 'ms');
+          
+          // Send performance metrics if analytics available
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'timing_complete', {
+              'name': 'page_load',
+              'value': loadTime,
+              'event_category': 'Performance'
+            });
+          }
+        }
+      });
+      
+      // Add meta tag for circular icon on iOS
+      document.addEventListener('DOMContentLoaded', function() {
+        // Ensure iOS uses circular icon
+        const appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+        if (appleIcon) {
+          appleIcon.setAttribute('sizes', '180x180');
+        }
+        
+        // Additional meta for PWA appearance
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.content = '#1e3c72';
+        } else {
+          const newMeta = document.createElement('meta');
+          newMeta.name = 'theme-color';
+          newMeta.content = '#1e3c72';
+          document.head.appendChild(newMeta);
+        }
+        
+        // Add description meta tag for SEO
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (!metaDescription) {
+          const descMeta = document.createElement('meta');
+          descMeta.name = 'description';
+          descMeta.content = 'Master Professional Forex Trading Through Consistency. Comprehensive 13-module bootcamp with expert mentorship. Limited slots available!';
+          document.head.appendChild(descMeta);
+        }
+      });
+      
+      // Trading-themed console message
+      console.log('%c🚀 ERASUTSFX TRADING BOOTCAMP %c\nMaster Forex Trading Through Consistency\n📞 0715657800 | 📧 erastusngamau90@gmail.com', 
+        'color: #FFD700; font-size: 16px; font-weight: bold; background: #1e3c72; padding: 10px; border-radius: 5px;',
+        'color: #ffffff; font-size: 12px;'
+      );
+    </script>
+    
+    <!-- Google Analytics (optional - add your tracking ID) -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_GA_ID');
+    </script>
+    -->
+    
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
